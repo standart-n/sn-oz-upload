@@ -39,7 +39,7 @@ function init(){
 	}
 
 	  
-	ymaps.geocode('Москва',{results:1}).then(function(res){
+	ymaps.geocode('Чебоксары',{results:1}).then(function(res){
 		var city=res.geoObjects.get(0);
 		var crdCity=city.geometry.getCoordinates();
 		//alert(crdCity);
@@ -47,7 +47,7 @@ function init(){
 
 	
     var myMap=new ymaps.Map("map",{
-		center:[56.324117,44.002672],
+		center:[56.135459,47.235484],
 		zoom:6,
 		behaviors:['default','scrollZoom'],
 		type:null
@@ -108,9 +108,11 @@ function init(){
     myMap.options.set('scrollZoomSpeed',1);
     myMap.controls.add('zoomControl').add('typeSelector').add('mapTools');
 
+	// cheboksaru 56.135459,47.235484
 	// kirov 58.581576,49.662283
 	// nijniy novgorod 56.324117,44.002672
 	// moscow 55.755773,37.617761
+	// samara 53.205226,50.191184
 
 	/*
 	function init () {
