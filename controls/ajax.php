@@ -11,7 +11,7 @@ function __construct() {
 
 function getAction() { 
 	$rg=self::$region;
-	$p="../client/";
+	$p="../publish/";
 	zip("../packets/".$rg."/".date("YmdHi").".zip");
 	addToZip($p."conf/themes.json"		,$p);
 	addToZip($p."content/".$rg			,$p);
