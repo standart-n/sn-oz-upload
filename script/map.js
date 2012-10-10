@@ -71,9 +71,9 @@ function init(){
 		preset:'twirl#lightblueDotIcon'
 	});
 
-	/*cityKirov.events.add('balloonopen',function(e){
+	cityKirovMark.events.add('balloonopen',function(e){
 		getBalloonContent();
-    });*/
+    });
     
     cityKirovCircle = new ymaps.Circle([
 		[58.581576,49.662283],
