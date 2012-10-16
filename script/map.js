@@ -23,15 +23,17 @@ function init(){
 
 	function getBalloonContent(){
 		$.ajax({
-			url:'sn-project/templates/maps/balloon.tpl',
+			url:'index.php',
 			cache:false,
 			type:'GET',
 			data:{
+				action:'showForm',
+				region:'kirov'
 			},
 			dataType:'text',
 			timeout:10000,
 			success:function(s){
-				$('.balloon-content-kirov').html(s);
+				$('#balloon').html(s);
 				$('.kirov-button-make').on("click",function(){ makePacket(); });
 			},
 			error:function(XMLHttpRequest,textStatus,error){ alert(error); }
@@ -62,41 +64,56 @@ function init(){
 	myMap.layers.add(osmLayer);
 
 	cityKirovMark=new ymaps.Placemark([58.581576,49.662283],{
-		hintContent:'Кировский регион',
-		balloonContentHeader:'Кировский регион',
-		balloonContentBody:'<div class="balloon-content-kirov">*</div>'
+		hintContent:'Кировский регион'
+		/*balloonContentHeader:'Кировский регион',
+		balloonContentBody:'<div class="balloon-content-kirov">*</div>'*/
 	},{
-		balloonMinWidth:300,
-		balloonMinHeight:200,
-		preset:'twirl#lightblueDotIcon'
+		iconImageHref:'sn-project/img/icon_kirov.png',
+		iconImageSize:[100,50],
+		iconImageOffset:[-50,-45]
+		/*balloonMinWidth:800,
+		balloonMinHeight:500,
+		balloonContentSize: [800,500],
+		balloonLayout:"default#imageWithContent",
+		balloonImageHref:'sn-project/img/balloon_main.png',
+		balloonImageSize:[800,500],
+		balloonAutoPan:true,
+		balloonShadow:false*/
 	});
 
-	cityKirovMark.events.add('balloonopen',function(e){
+	cityKirovMark.events.add('click',function(e){
+		$('#balloon').show();
 		getBalloonContent();
     });
     
     cityKirovCircle = new ymaps.Circle([
 		[58.581576,49.662283],
-		100000
+		150000
 	],
 	{
-		hintContent:"Кировский регион",
-		balloonContentHeader:'Кировский регион',
-		balloonContentBody:'<div class="balloon-content-kirov">*</div>'
-	
+		hintContent:"Кировский регион"
+		/*balloonContentHeader:'Кировский регион',
+		balloonContentBody:'<div class="balloon-content-kirov">*</div>'*/
 	},
 	{	
 		fill:true,
 		geodesic:true,
-		opacity:0.3,
+		opacity:0.2,
 		stroke:true,
-		strokeWidth:2,
-		balloonMinWidth:300,
-		balloonMinHeight:200
-	
+		strokeWidth:2
+		/*balloonMinWidth:800,
+		balloonMinHeight:500,
+		balloonContentSize: [800,500],
+		balloonLayout:"default#imageWithContent",
+		balloonImageHref:'sn-project/img/balloon_main.png',
+		balloonImageSize:[800,500],
+		balloonAutoPan:true,
+		balloonShadow:false*/	
 	});
 
-	cityKirovCircle.events.add('balloonopen',function(e){
+	cityKirovCircle.events.add('click',function(e){
+		//alert('go!');
+		$('#balloon').show();
 		getBalloonContent();
     });
     
