@@ -129,6 +129,29 @@ a.balloon-top-link-active {
 color:#13d5ff;
 }
 
+#ajax-status {
+font-family:Verdana;
+font-size:12px;
+color:#eccf51;
+display:block;
+float:left;
+width:220px;
+height:25px;
+margin:0 0 0 10px;
+padding:8px 0 0 5px;
+}
+
+#ajax-status a:hover {
+color:#ccc;
+}
+
+#ajax-status a {
+font-family:Verdana;
+font-size:12px;
+color:#13d5ff;
+text-decoration:underline;
+outline:none;
+}
 
 #packets {
 display:block;

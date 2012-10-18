@@ -8,6 +8,9 @@
 				<td align="center">
 					<a id="packets-link-preview" href="http://oz.st-n.ru/publish/" target="_blank">Предпросмотр</a>
 				</td>
+				<td align="center">
+					<div id="ajax-status"></div>
+				</td>
 			</tr>
 		</table>
 	</div>

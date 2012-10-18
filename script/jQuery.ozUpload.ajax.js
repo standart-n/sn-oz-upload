@@ -53,11 +53,15 @@
 					region:sn.region,
 					content:def.content
 				},
-				dataType:'text',
+				dataType:'json',
 				timeout:10000,
+				beforeSend:function(){
+					$("#ajax-status").html('<img src="sn-project/img/loader.gif">').addClass("loading");
+				},
 				success:function(s){
-					alert(s);
 					sn.result=s;
+					$("#ajax-status").empty().removeClass("loading");
+					if (sn.result.status) { $("#ajax-status").html(sn.result.status); }
 					$(this).data('ozUpload',sn);
 				},
 				error:function(XMLHttpRequest,textStatus,error){ alert(error); }
