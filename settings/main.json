@@ -23,6 +23,29 @@
 					"name":"darky"
 				}
 			}
+		},
+		{
+			"name":"izhevsk",
+			"hint":"Ижевск",
+			"coordinates":[56.783738,53.161630],
+			"radius":100000,
+			"icon":
+			{
+				"iconImageHref":"sn-project/img/icon_izhevsk.png"
+			},
+			"conf":
+			{
+				"region":
+				{
+					"caption":"Ижевск",
+					"name":"izhevsk"
+				},
+				"theme":
+				{
+					"caption":"Тёмная",
+					"name":"darky"
+				}
+			}
 		}
 	]
 }

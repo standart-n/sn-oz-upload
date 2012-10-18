@@ -22,28 +22,11 @@ function init(){
         tileTransparent: true
 	});
 	myMap.layers.add(osmLayer);
+	
+	var collection=new ymaps.GeoObjectCollection();
 
-	var rg={
-			name:"city",
-			hint:"Регион",
-			coordinates:[55.755773,37.617761],
-			radius:170000,
-			icon:
-			{
-				iconImageHref:"sn-project/img/icon_moscow.png",
-				iconImageSize:[100,50],
-				iconImageOffset:[-50,-45]
-			},
-			circle:
-			{
-				fill:true,
-				geodesic:true,
-				opacity:0.2,
-				stroke:true,
-				strokeWidth:2
-			}
-						
-		};
+
+		
 	$.ajax({
 		url:'sn-project/settings/main.json',
 		async:false,
@@ -51,7 +34,30 @@ function init(){
 		dataType:"json",
 		success:function(s){
 			if (s.regions) {
-				$.each(s.regions,function(){					
+				$.each(s.regions,function(){
+
+				var rg={
+						name:"city",
+						hint:"Регион",
+						coordinates:[55.755773,37.617761],
+						radius:170000,
+						icon:
+						{
+							iconImageHref:"sn-project/img/icon_moscow.png",
+							iconImageSize:[100,50],
+							iconImageOffset:[-50,-45]
+						},
+						circle:
+						{
+							fill:true,
+							geodesic:true,
+							opacity:0.2,
+							stroke:true,
+							strokeWidth:2
+						}
+					
+					};
+
 					$.extend(true,rg,this);
 					var cityMark=new ymaps.Placemark(rg.coordinates,{
 						hintContent:rg.hint
@@ -72,20 +78,23 @@ function init(){
 					cityCircle.events.add('click',function(e){
 						$("#balloon").ozUpload({'region':rg.name});
 					});
+					
+					alert(rg.coordinates);
     
-					myMap.geoObjects.add(cityMark);
-					myMap.geoObjects.add(cityCircle);
+					collection.add(cityMark);
+					collection.add(cityCircle);
 					
 				});
 			}			
 		}
 	});
 	
-	
-
+	myMap.geoObjects.add(collection);
     
     myMap.options.set('scrollZoomSpeed',1);
     myMap.controls.add('zoomControl').add('typeSelector').add('mapTools');
+    
+    myMap.setBounds(collection.getBounds());
 
 	// cheboksaru 56.135459,47.235484
 	// kirov 58.581576,49.662283

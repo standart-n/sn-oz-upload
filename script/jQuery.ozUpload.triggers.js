@@ -12,6 +12,9 @@
 			$("#balloon-content a").on("click",function(){
 				oz.ozUploadEvents({'href':$(this).attr("href")});
 			});
+			$("#packets-link-preview").on("click",function(){
+				oz.ozUploadEvents({'href':"#preview"});
+			});
 		},
 		closeBalloon:function()
 		{

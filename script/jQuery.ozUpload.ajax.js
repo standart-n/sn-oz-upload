@@ -62,6 +62,7 @@
 					sn.result=s;
 					$("#ajax-status").empty().removeClass("loading");
 					if (sn.result.status) { $("#ajax-status").html(sn.result.status); }
+					if (sn.result.alert) { alert(sn.result.alert); }
 					$(this).data('ozUpload',sn);
 				},
 				error:function(XMLHttpRequest,textStatus,error){ alert(error); }

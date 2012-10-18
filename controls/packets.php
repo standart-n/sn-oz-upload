@@ -6,8 +6,15 @@ public static $lastPacket;
 public static $newPacket;
 
 function __construct() {
-	
-	
+		
+}
+
+function preview() { $j=array();	
+	if (!self::updateConfFile()) { self::$status="Не удалось получить настройки для данного пакета"; } else {
+		self::$status='';
+	}	
+	$j['status']=self::$status;
+	echo json_encode($j);
 }
 
 function build() { $j=array(); $rt=false;
@@ -97,6 +104,7 @@ function buildZipArchive() {
 	addToZip($p."conf/"					,$p);
 	addToZip($p."content/".$rg			,$p);
 	addToZip($p."files/".$rg			,$p);
+	addToZip($p."photo/".$rg			,$p);
 	addToZip($p."img/"					,$p);
 	addToZip($p."js/"					,$p);
 	addToZip($p."layout/".$rg			,$p);

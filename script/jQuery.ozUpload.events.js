@@ -48,8 +48,9 @@
 					break;
 					case "build":
 						$(this).ozUploadAjax('sendRequest',{'action':'build'});
-						var sn=$(this).data('ozUpload');
-						if (sn.result.alert) { alert(sn.result.alert); }
+					break;
+					case "preview":
+						$(this).ozUploadAjax('sendRequest',{'action':'preview'});
 					break;
 					case "close":
 						$(this).hide();

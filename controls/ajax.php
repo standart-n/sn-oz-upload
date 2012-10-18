@@ -13,6 +13,9 @@ function __construct() {
 					case "build":
 						packets::build();
 					break;
+					case "preview":
+						packets::preview();
+					break;
 					case "showContent":
 						self::showContent();
 					break;
