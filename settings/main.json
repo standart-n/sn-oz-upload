@@ -9,6 +9,19 @@
 			"icon":
 			{
 				"iconImageHref":"sn-project/img/icon_kirov.png"
+			},
+			"conf":
+			{
+				"region":
+				{
+					"caption":"Киров",
+					"name":"kirov"
+				},
+				"theme":
+				{
+					"caption":"Тёмная",
+					"name":"darky"
+				}
 			}
 		}
 	]
