@@ -2,7 +2,14 @@
 	"regions":
 	[
 		{
-			"name":"kirov"		
+			"name":"kirov",
+			"hint":"Кировский регион",
+			"coordinates":[58.581576,49.662283],
+			"radius":150000,
+			"icon":
+			{
+				"iconImageHref":"sn-project/img/icon_kirov.png"
+			}
 		}
 	]
 }

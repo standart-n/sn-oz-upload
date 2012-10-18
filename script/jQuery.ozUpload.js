@@ -3,10 +3,18 @@
 	var methods={
 		init:function(options)
 		{
+			if (!options) { var options={}; }
+			def={
+				'region':'moscow',
+				'content':{},
+				'result':{}
+			}
+			$.extend(true,def,options);
 			return this.each(function(){
-				$(this).data('ozUpload',{});
+				$(this).data('ozUpload',def);
 				$(this).ozUploadConf();
 				var sn=$(this).data('ozUpload');
+				$(this).ozUploadEvents({'href':'#autoload'});
 			});
 		}
 	};		

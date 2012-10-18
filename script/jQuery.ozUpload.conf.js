@@ -11,7 +11,7 @@
 		{
 			var sn=$(this).data('ozUpload');
 			$.ajax({
-				url:'settings/main.json',
+				url:'sn-project/settings/main.json',
 				async:false,
 				dataType:"json",
 				success:function(s){

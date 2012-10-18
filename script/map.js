@@ -3,44 +3,6 @@ ymaps.ready(init);
 
 function init(){
 	
-	function makePacket(){
-		$.ajax({
-			url:'index.php',
-			cache:false,
-			type:'GET',
-			data:{
-				action:'make',
-				region:'kirov'
-			},
-			dataType:'text',
-			timeout:10000,
-			success:function(s){
-				alert(s);
-			},
-			error:function(XMLHttpRequest,textStatus,error){ alert(error); }
-		});
-	}
-
-	function getBalloonContent(){
-		$.ajax({
-			url:'index.php',
-			cache:false,
-			type:'GET',
-			data:{
-				action:'showForm',
-				region:'kirov'
-			},
-			dataType:'text',
-			timeout:10000,
-			success:function(s){
-				$('#balloon').html(s);
-				$('.kirov-button-make').on("click",function(){ makePacket(); });
-			},
-			error:function(XMLHttpRequest,textStatus,error){ alert(error); }
-		});
-	}
-
-	  
 	ymaps.geocode('Чебоксары',{results:1}).then(function(res){
 		var city=res.geoObjects.get(0);
 		var crdCity=city.geometry.getCoordinates();
@@ -55,73 +17,73 @@ function init(){
 		type:null
     });
     
-    //http://mt0.google.com/vt/lyrs=m@176000000&hl=ru&%c
-    //http://otile%d.mqcdn.com/tiles/1.0.0/osm/%z/%x/%y.png
 	var osmLayer = new ymaps.Layer('http://mt0.google.com/vt/lyrs=m@176000000&hl=ru&%c', {
         projection:ymaps.projection.sphericalMercator,
         tileTransparent: true
 	});
 	myMap.layers.add(osmLayer);
 
-	cityKirovMark=new ymaps.Placemark([58.581576,49.662283],{
-		hintContent:'Кировский регион'
-		/*balloonContentHeader:'Кировский регион',
-		balloonContentBody:'<div class="balloon-content-kirov">*</div>'*/
-	},{
-		iconImageHref:'sn-project/img/icon_kirov.png',
-		iconImageSize:[100,50],
-		iconImageOffset:[-50,-45]
-		/*balloonMinWidth:800,
-		balloonMinHeight:500,
-		balloonContentSize: [800,500],
-		balloonLayout:"default#imageWithContent",
-		balloonImageHref:'sn-project/img/balloon_main.png',
-		balloonImageSize:[800,500],
-		balloonAutoPan:true,
-		balloonShadow:false*/
+	var rg={
+			name:"city",
+			hint:"Регион",
+			coordinates:[55.755773,37.617761],
+			radius:170000,
+			icon:
+			{
+				iconImageHref:"sn-project/img/icon_moscow.png",
+				iconImageSize:[100,50],
+				iconImageOffset:[-50,-45]
+			},
+			circle:
+			{
+				fill:true,
+				geodesic:true,
+				opacity:0.2,
+				stroke:true,
+				strokeWidth:2
+			}
+						
+		};
+	$.ajax({
+		url:'sn-project/settings/main.json',
+		async:false,
+		cache:false,
+		dataType:"json",
+		success:function(s){
+			if (s.regions) {
+				$.each(s.regions,function(){					
+					$.extend(true,rg,this);
+					var cityMark=new ymaps.Placemark(rg.coordinates,{
+						hintContent:rg.hint
+					},
+						rg.icon
+					);
+					cityMark.events.add('click',function(e){
+						$("#balloon").ozUpload({'region':rg.name});
+					});
+    
+					var cityCircle = new ymaps.Circle([rg.coordinates,rg.radius],
+					{
+						hintContent:rg.hint
+					},
+						rg.circle
+					);
+
+					cityCircle.events.add('click',function(e){
+						$("#balloon").ozUpload({'region':rg.name});
+					});
+    
+					myMap.geoObjects.add(cityMark);
+					myMap.geoObjects.add(cityCircle);
+					
+				});
+			}			
+		}
 	});
+	
+	
 
-	cityKirovMark.events.add('click',function(e){
-		$('#balloon').show();
-		getBalloonContent();
-    });
     
-    cityKirovCircle = new ymaps.Circle([
-		[58.581576,49.662283],
-		150000
-	],
-	{
-		hintContent:"Кировский регион"
-		/*balloonContentHeader:'Кировский регион',
-		balloonContentBody:'<div class="balloon-content-kirov">*</div>'*/
-	},
-	{	
-		fill:true,
-		geodesic:true,
-		opacity:0.2,
-		stroke:true,
-		strokeWidth:2
-		/*balloonMinWidth:800,
-		balloonMinHeight:500,
-		balloonContentSize: [800,500],
-		balloonLayout:"default#imageWithContent",
-		balloonImageHref:'sn-project/img/balloon_main.png',
-		balloonImageSize:[800,500],
-		balloonAutoPan:true,
-		balloonShadow:false*/	
-	});
-
-	cityKirovCircle.events.add('click',function(e){
-		//alert('go!');
-		$('#balloon').show();
-		getBalloonContent();
-    });
-    
-
-	myMap.geoObjects.add(cityKirovMark);
-	myMap.geoObjects.add(cityKirovCircle);
-    
-
     myMap.options.set('scrollZoomSpeed',1);
     myMap.controls.add('zoomControl').add('typeSelector').add('mapTools');
 
@@ -130,45 +92,5 @@ function init(){
 	// nijniy novgorod 56.324117,44.002672
 	// moscow 55.755773,37.617761
 	// samara 53.205226,50.191184
-
-	/*
-	function init () {
-            var myMap = new ymaps.Map('map', {
-                    center:[-19.69445, 127.505887],
-                    zoom:3,
-                    type: 'yandex#hybrid'
-                }),
-            
-                // Создаем метку с изображением коалы
-                myPlacemark = new ymaps.Placemark([-19.76, 127.505887], {
-                    // Контент балуна
-                    balloonContent: '<div style = "margin-top: 30px; margin-left: 20px;" ><b>Я живу тут!</b></div>'
-                }, {
-                    // Не скрывать иконку метки при открытии балуна
-                    hideIconOnBalloonOpen: false,
-                    // Изображение иконки метки
-                    iconImageHref: 'http://www.ohranatruda.ru:8080/upload/resize_cache/main/746/150_150_1/koala1.jpg',
-                    // Размеры изображения иконки
-                    iconImageSize: [70, 80],
-                    // Размеры содержимого балуна
-                    balloonContentSize: [100, 100],
-                    // Задаем макет балуна - пользовательская картинка с контентом
-                    balloonLayout: "default#imageWithContent",
-                    // Картинка балуна
-                    balloonImageHref: '/maps/doc/jsapi/2.x/examples/images/thoughts.gif',
-                    // Смещение картинки балуна
-                    balloonImageOffset: [70, -130],
-                    // Размеры картинки балуна
-                    balloonImageSize: [120, 100],
-                    // Балун не имеет тени
-                    balloonShadow: false
-                });
-
-            // Добавляем метку на карту
-            myMap.geoObjects.add(myPlacemark);
-            myPlacemark.balloon.open();
-	}
-	*/
-	
 	
 }
