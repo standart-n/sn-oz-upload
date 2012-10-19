@@ -11,7 +11,7 @@ function __construct() {
 
 function preview() { $j=array();	
 	if (!self::updateConfFile()) { self::$status="Не удалось получить настройки для данного пакета"; } else {
-		self::$status='';
+		self::$status='Выбран регион: '.ajax::$region;
 	}	
 	$j['status']=self::$status;
 	echo json_encode($j);

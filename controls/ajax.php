@@ -50,6 +50,11 @@ function getUrl() {
 			self::$region=trim(strval($_REQUEST['region']));
 			if (self::$region=="") return false;
 		break;
+		case "preview":
+			if (!isset($_REQUEST['region'])) return false;
+			self::$region=trim(strval($_REQUEST['region']));
+			if (self::$region=="") return false;
+		break;
 		case "showContent":
 			if (!isset($_REQUEST['region'])) return false;
 			self::$region=trim(strval($_REQUEST['region']));

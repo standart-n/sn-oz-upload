@@ -21,6 +21,7 @@
 						$(this).ozUploadTriggers('switchTabs',{'link':'packets'});
 						$(this).ozUploadTriggers('switcherTabs');
 						$(this).ozUploadTriggers('switchToDark');
+						$(this).ozUploadAjax('sendRequest',{'action':'preview'});
 					break;
 					case "packets":
 						$(this).ozUploadAjax('loadContent',{'content':'packets'});
@@ -48,9 +49,6 @@
 					break;
 					case "build":
 						$(this).ozUploadAjax('sendRequest',{'action':'build'});
-					break;
-					case "preview":
-						$(this).ozUploadAjax('sendRequest',{'action':'preview'});
 					break;
 					case "close":
 						$(this).hide();

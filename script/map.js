@@ -79,8 +79,6 @@ function init(){
 						$("#balloon").ozUpload({'region':rg.name});
 					});
 					
-					alert(rg.coordinates);
-    
 					collection.add(cityMark);
 					collection.add(cityCircle);
 					
@@ -92,7 +90,7 @@ function init(){
 	myMap.geoObjects.add(collection);
     
     myMap.options.set('scrollZoomSpeed',1);
-    myMap.controls.add('zoomControl').add('typeSelector').add('mapTools');
+    myMap.controls.add('zoomControl').add('mapTools');
     
     myMap.setBounds(collection.getBounds());
 
@@ -103,3 +101,4 @@ function init(){
 	// samara 53.205226,50.191184
 	
 }
+
