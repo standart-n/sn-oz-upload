@@ -61,7 +61,7 @@ function buildNewPacket() {
 	self::$newPacket->caption=iconv("UTF8","cp1251","Обновление от ".date("d.m.Y"));
 	self::$newPacket->content="http://oz.st-n.ru/".self::$zipName;
 	if (query(array(
-		"sql"=>"insert into zcom_test ".
+		"sql"=>"insert into zcom ".
 				"(`post_id`,`content`,`packet`,`status`,`actualdt`,`caption`) values ".
 				"(".
 					"".self::$newPacket->post_id.",".
@@ -81,7 +81,7 @@ function buildNewPacket() {
 
 function getLastPacketInfo() {
 	if (query(array(
-		"sql"=>"select * from zcom_test where (1=1) order by id desc limit 1 ",
+		"sql"=>"select * from zcom where (1=1) order by id desc limit 1 ",
 		"connection"=>ajax::$region
 		),$ms)) 
 	{
