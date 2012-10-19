@@ -56,9 +56,12 @@ function init(){
 							strokeWidth:2
 						}
 					
-					};
+				};
 
-					$.extend(true,rg,this);
+				$.extend(true,rg,this);
+				
+				if (!rg.hidden) {
+				
 					var cityMark=new ymaps.Placemark(rg.coordinates,{
 						hintContent:rg.hint
 					},
@@ -81,6 +84,8 @@ function init(){
 					
 					collection.add(cityMark);
 					collection.add(cityCircle);
+					
+				}
 					
 				});
 			}			

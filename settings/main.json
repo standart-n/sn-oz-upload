@@ -26,6 +26,7 @@
 		},
 		{
 			"name":"izhevsk",
+			"hidden":true,
 			"hint":"Ижевск",
 			"coordinates":[56.783738,53.161630],
 			"radius":100000,
