@@ -131,19 +131,33 @@ padding:0;
 margin:30px 0 0 10px;
 }
 
-a.text-links-menu:hover {
-color:#ff0000;
-}
 
 a.text-links-menu {
 font-family:Verdana;
 font-size:14px;
-color:#ff6f40;
 display:block;
 float:left;
 clear:both;
 padding:0 0 5px 0;
 text-decoration:none;
 outline:none;
+}
+
+a.text-links-menu-normal:hover {
+color:#ff0000;
+}
+
+a.text-links-menu-normal {
+font-weight:normal;
+color:#ff6f40;
+}
+
+a.text-links-menu-active:hover {
+color:#eee;
+}
+
+a.text-links-menu-active {
+font-weight:bold;
+color:#fcfcfc;
 }
 

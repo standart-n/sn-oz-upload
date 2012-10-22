@@ -32,6 +32,7 @@ function loadText() { $j=array(); $f="";
 	if (file_exists("../publish/content/".ajax::$region."/".ajax::$file)) {
 		$f=file_get_contents("../publish/content/".ajax::$region."/".ajax::$file);
 		$j['text']=$f;
+		$j['name']=str_replace(".html","",ajax::$file);
 		$j['callback']="afterLoadText";
 		self::$status="Файл ".ajax::$file." загружен...";
 	} else {

@@ -39,12 +39,16 @@
 						$(this).ozUploadTriggers('linksBalloon');
 						$(this).ozUploadTriggers('switchTabs',{'link':'text'});
 						$(this).ozUploadTriggers('switchToDark');
+						$(this).ozUploadTriggers('linksTextMenu');
 						$(this).ozUploadAjax('sendRequest',{'action':'loadText','file':'main.html'});
 					break;
 					case "afterLoadText":
 						var sn=$(this).data('ozUpload');
 						if (sn.result.text) {
 							$("#text-wrap textarea").val(sn.result.text);
+						}
+						if (sn.result.name) {
+							$(this).ozUploadTriggers('switchTextMenu',{'link':sn.result.name});
 						}
 					break;
 					case "files":

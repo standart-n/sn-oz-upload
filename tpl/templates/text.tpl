@@ -21,14 +21,22 @@
 					<div id="text-menu">
 					{if isset($links)}
 						{foreach from=$links item=key}
-							<a class="text-links-menu" data-file="{$key.file}" href="#text-{$key.name}">{$key.name}</a>
+							<a 
+								id="text-menu-{$key.name}" 
+								class="text-links-menu text-links-menu-normal" 
+								data-file="{$key.file}" 
+								href="#text-{$key.name}"
+							>
+								{$key.file}
+							</a>
 						{/foreach}
 					{/if}
 					</div>
 				</td>
 				<td>
-					<div id="text-wrap" autofocus wrap="soft" tabindex="0" accesskey="h">
-						<textarea id="text-area" width="100%">lorem ipsum dolor</textarea>
+					<div id="text-wrap">
+						<textarea id="text-area" autofocus wrap="soft" tabindex="0" accesskey="h" width="100%">lorem ipsum dolor</textarea>
+						<input id="text-input-file" type="hidden" value="main.html">
 					</div>
 				</td>
 			</tr>

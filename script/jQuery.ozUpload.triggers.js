@@ -37,6 +37,23 @@
 		switchToLight:function()
 		{
 			$("#balloon-content").removeClass("balloon-content-dark").addClass("balloon-content-light");
+		},
+		linksTextMenu:function()
+		{
+			var oz=$(this);
+			$(".text-links-menu").on("click",function(){
+				oz.ozUploadAjax('sendRequest',{'action':'loadText','file':$(this).data('file')});
+			});
+		},
+		switchTextMenu:function(options)
+		{
+			if (!options) { var options={}; }
+			var def={
+				'link':'main'
+			};
+			$.extend(def,options);
+			$(".text-links-menu").removeClass("text-links-menu-active").addClass("text-links-menu-normal");
+			$("#text-menu-"+def.link+"").removeClass("text-links-menu-normal").addClass("text-links-menu-active").blur();
 		},		
 		switchTabs:function(options)
 		{
