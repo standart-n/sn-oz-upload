@@ -61,7 +61,7 @@ function buildNewPacket() {
 	self::$newPacket->caption=iconv("UTF8","cp1251","Обновление от ".date("d.m.Y"));
 	self::$newPacket->content="http://oz.st-n.ru/".self::$zipName;
 	if (query(array(
-		"sql"=>"insert into zcom ".
+		"sql"=>"insert into zcom_test ".
 				"(`post_id`,`content`,`packet`,`status`,`actualdt`,`caption`) values ".
 				"(".
 					"".self::$newPacket->post_id.",".
@@ -81,7 +81,7 @@ function buildNewPacket() {
 
 function getLastPacketInfo() {
 	if (query(array(
-		"sql"=>"select * from zcom where (1=1) order by id desc limit 1 ",
+		"sql"=>"select * from zcom_test where (1=1) order by id desc limit 1 ",
 		"connection"=>ajax::$region
 		),$ms)) 
 	{
@@ -128,5 +128,31 @@ function unixTimeToDateTime($dt) {
 	return abs(($dt/$SecPerDay)+$Offset1970);
 }
 
+function addPacketsInfo() {
+	return fetch("packets.tpl");
+}
+
+function addPacketsTable() { 
+	$pc=array(); $i=-1;
+	if (query(array(
+		"sql"=>"select * from zcom_test where (1=1) order by id desc limit 5 ",
+		"connection"=>ajax::$region
+		),$ms))
+	{
+		foreach ($ms as $r) {
+			if (file_exists("../".str_replace("http://oz.st-n.ru/","",$r->content))) {
+				$i++;		
+				$pc[$i]['id']=$r->id;
+				$pc[$i]['packet']=$r->packet;
+				$pc[$i]['actualdt']=round(floatval($r->actualdt),3);
+				$pc[$i]['content']=$r->content;
+				$pc[$i]['caption']=$r->caption;
+			}
+		}
+		assign('packets',$pc);
+		return fetch("packets_table.tpl");
+	}
+	return false;
+}
 
 } ?>

@@ -72,17 +72,19 @@ function getUrl() {
 function showContent() {
 	switch (self::$content){
 		case "all":
-			load("balloon/form.tpl");
-			innerHTML("#balloon-content","balloon/packets.tpl");
+			load("form.tpl");
+			innerHTML("#balloon-content",packets::addPacketsInfo());
+			innerHTML("#packets-table",packets::addPacketsTable());
 		break;
 		case "packets":
-			load("balloon/packets.tpl");
+			load(packets::addPacketsInfo());
+			innerHTML("#packets-table",packets::addPacketsTable());
 		break;
 		case "files":
-			load("balloon/files.tpl");
+			load("files.tpl");
 		break;
 		case "text":
-			load("balloon/text.tpl");
+			load("text.tpl");
 		break;
 	}
 	echo html();			
