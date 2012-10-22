@@ -4,6 +4,7 @@ public static $action;
 public static $region;
 public static $content;
 public static $file;
+public static $text;
 public static $conf;
 
 function __construct() {
@@ -19,6 +20,9 @@ function __construct() {
 					break;
 					case "loadText":
 						text::loadText();
+					break;
+					case "saveText":
+						text::saveText();
 					break;
 					case "showContent":
 						self::showContent();
@@ -76,6 +80,19 @@ function getUrl() {
 			if (!isset($_REQUEST['file'])) return false;
 			self::$file=trim(strval($_REQUEST['file']));
 			if (self::$file=="") return false;
+		break;
+		case "saveText":
+			if (!isset($_REQUEST['region'])) return false;
+			self::$region=trim(strval($_REQUEST['region']));
+			if (self::$region=="") return false;
+
+			if (!isset($_REQUEST['file'])) return false;
+			self::$file=trim(strval($_REQUEST['file']));
+			if (self::$file=="") return false;
+
+			if (!isset($_REQUEST['text'])) return false;
+			self::$text=trim(strval($_REQUEST['text']));
+			if (self::$text=="") return false;
 		break;
 		default:return false;
 	}

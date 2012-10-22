@@ -44,12 +44,24 @@
 					break;
 					case "afterLoadText":
 						var sn=$(this).data('ozUpload');
-						if (sn.result.text) {
-							$("#text-wrap textarea").val(sn.result.text);
+						if (sn.result.text) {							
+							var text=sn.result.text;
+							$("#text-wrap textarea").val(text.replace(/\\"/g,'"'));
 						}
 						if (sn.result.name) {
 							$(this).ozUploadTriggers('switchTextMenu',{'link':sn.result.name});
 						}
+						if (sn.result.file) {
+							$("#text-input-file").val(sn.result.file);
+						}
+					break;
+					case "saveText":
+						alert($("#text-wrap textarea").val());
+						$(this).ozUploadAjax('sendRequest',{
+							'action':'saveText',
+							'file':$("#text-input-file").val(),
+							'text':$("#text-wrap textarea").val()
+						});
 					break;
 					case "files":
 						$(this).ozUploadAjax('loadContent',{'content':'files'});

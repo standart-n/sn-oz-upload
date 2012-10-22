@@ -3,7 +3,7 @@
 		<table align="left" cellpadding="2" cellspacing="2" border="0">
 			<tr valign="top">
 				<td align="center">
-					<a id="text-link-save" href="#save">Сохранить</a>
+					<a id="text-link-save" href="#saveText">Сохранить</a>
 				</td>
 				<td align="center">
 					<a id="text-link-preview" href="http://oz.st-n.ru/publish/" target="_blank">Предпросмотр</a>
