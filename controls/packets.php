@@ -104,7 +104,7 @@ function buildZipArchive() {
 	zip("../".self::$zipName);
 	addToZip($p."conf/"					,$p);
 	addToZip($p."content/".$rg			,$p);
-	addToZip($p."files/".$rg			,$p);
+	//addToZip($p."files/".$rg			,$p);
 	addToZip($p."photo/".$rg			,$p);
 	addToZip($p."img/"					,$p);
 	addToZip($p."js/"					,$p);
