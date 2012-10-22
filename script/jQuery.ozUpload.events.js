@@ -46,8 +46,9 @@
 						var sn=$(this).data('ozUpload');
 						if (sn.result.text) {							
 							var text=sn.result.text;
-							$("#text-wrap textarea").val(text.replace(/\\"/g,'"'));
-							$("#text-wrap textarea").val(text.replace(/\\'/g,"'"));
+							text=text.replace(/\\"/g,'"');
+							text=text.replace(/\\'/g,"'");
+							$("#text-wrap textarea").val(text);
 						}
 						if (sn.result.name) {
 							$(this).ozUploadTriggers('switchTextMenu',{'link':sn.result.name});

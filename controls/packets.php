@@ -145,7 +145,7 @@ function addPacketsTable() {
 				$i++;		
 				$pc[$i]['id']=$r->id;
 				$pc[$i]['packet']=$r->packet;
-				$pc[$i]['actualdt']=round(floatval($r->actualdt),2);
+				$pc[$i]['actualdt']=round(floatval($r->actualdt),0);
 				$pc[$i]['content']=$r->content;
 				$pc[$i]['caption']=toUTF($r->caption);
 			}
