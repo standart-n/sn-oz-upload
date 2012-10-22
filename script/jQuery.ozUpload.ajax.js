@@ -39,7 +39,9 @@
 			if (!options) { var options={}; }
 			var def={
 				'action':'build',
-				'content':''
+				'content':'',
+				'text':'',
+				'file':''
 			};
 			$.extend(true,def,options);
 			var sn=$(this).data('ozUpload');
@@ -49,6 +51,8 @@
 				data:{
 					action:def.action,
 					region:sn.region,
+					text:def.text,
+					file:def.file,
 					content:def.content
 				},
 				dataType:'json',
@@ -59,9 +63,10 @@
 				success:function(s){
 					sn.result=s;
 					$("#status").empty().removeClass("loading");
+					$(this).data('ozUpload',sn);
 					if (sn.result.status) { $("#status").html(sn.result.status); }
 					if (sn.result.alert) { alert(sn.result.alert); }
-					$(this).data('ozUpload',sn);
+					if (sn.result.callback) { $(this).ozUploadEvents({'href':'#'+sn.result.callback}); }
 				},
 				error:function(XMLHttpRequest,textStatus,error){ 
 					$("#status").html(error).removeClass("loading");

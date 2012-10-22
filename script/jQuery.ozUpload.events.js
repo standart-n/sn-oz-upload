@@ -39,6 +39,13 @@
 						$(this).ozUploadTriggers('linksBalloon');
 						$(this).ozUploadTriggers('switchTabs',{'link':'text'});
 						$(this).ozUploadTriggers('switchToDark');
+						$(this).ozUploadAjax('sendRequest',{'action':'loadText','file':'main.html'});
+					break;
+					case "afterLoadText":
+						var sn=$(this).data('ozUpload');
+						if (sn.result.text) {
+							$("#text-wrap textarea").val(sn.result.text);
+						}
 					break;
 					case "files":
 						$(this).ozUploadAjax('loadContent',{'content':'files'});

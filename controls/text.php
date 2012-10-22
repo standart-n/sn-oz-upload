@@ -25,7 +25,22 @@ function addLinksToMenu() {
 		} }
 	}
 	closedir($dir);
-	chdir("../../../upload-dev"); 
+	chdir("../../../upload-dev");
 }
+
+function loadText() { $j=array(); $f="";
+	if (file_exists("../publish/content/".ajax::$region."/".ajax::$file)) {
+		$f=file_get_contents("../publish/content/".ajax::$region."/".ajax::$file);
+		$j['text']=$f;
+		$j['callback']="afterLoadText";
+		self::$status="Файл ".ajax::$file." загружен...";
+	} else {
+		self::$status="Файл ".ajax::$file." не найден...";
+	}
+	$j['file']=ajax::$file;
+	$j['status']=self::$status;
+	echo json_encode($j);
+}
+
 
 } ?>

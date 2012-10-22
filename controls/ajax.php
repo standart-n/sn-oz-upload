@@ -3,6 +3,7 @@
 public static $action;
 public static $region;
 public static $content;
+public static $file;
 public static $conf;
 
 function __construct() {
@@ -15,6 +16,9 @@ function __construct() {
 					break;
 					case "preview":
 						packets::preview();
+					break;
+					case "loadText":
+						text::loadText();
 					break;
 					case "showContent":
 						self::showContent();
@@ -63,6 +67,15 @@ function getUrl() {
 			if (!isset($_REQUEST['content'])) return false;
 			self::$content=trim(strval($_REQUEST['content']));
 			if (self::$content=="") return false;
+		break;
+		case "loadText":
+			if (!isset($_REQUEST['region'])) return false;
+			self::$region=trim(strval($_REQUEST['region']));
+			if (self::$region=="") return false;
+
+			if (!isset($_REQUEST['file'])) return false;
+			self::$file=trim(strval($_REQUEST['file']));
+			if (self::$file=="") return false;
 		break;
 		default:return false;
 	}
