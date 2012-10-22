@@ -9,7 +9,7 @@
 					<a id="packets-link-preview" href="http://oz.st-n.ru/publish/" target="_blank">Предпросмотр</a>
 				</td>
 				<td align="center">
-					<div id="status" class="loading"></div>
+					<div id="status"></div>
 				</td>
 			</tr>
 		</table>

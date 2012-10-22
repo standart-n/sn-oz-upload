@@ -135,7 +135,7 @@ function addPacketsInfo() {
 function addPacketsTable() { 
 	$pc=array(); $i=-1;
 	if (query(array(
-		"sql"=>"select * from zcom_test where (1=1) order by id desc limit 5 ",
+		"sql"=>"select * from zcom_test where (1=1) order by id desc limit 10 ",
 		"connection"=>ajax::$region
 		),$ms))
 	{
@@ -144,9 +144,9 @@ function addPacketsTable() {
 				$i++;		
 				$pc[$i]['id']=$r->id;
 				$pc[$i]['packet']=$r->packet;
-				$pc[$i]['actualdt']=round(floatval($r->actualdt),3);
+				$pc[$i]['actualdt']=round(floatval($r->actualdt),2);
 				$pc[$i]['content']=$r->content;
-				$pc[$i]['caption']=$r->caption;
+				$pc[$i]['caption']=toUTF($r->caption);
 			}
 		}
 		assign('packets',$pc);

@@ -183,7 +183,7 @@ clear:both;
 #packets-table {
 font-family:Verdana;
 font-size:12px;
-color:#eee;
+color:#e5e5e5;
 display:block;
 float:left;
 width:100%;
@@ -252,6 +252,14 @@ text-decoration:none;
 outline:none;
 }
 
+.packet-link-download:hover {
+color:#ff0000;
+}
 
-
+.packet-link-download {
+font-family:Verdana;
+font-size:12px;
+color:#689cd2;
+text-decoration:underline;
+}
 

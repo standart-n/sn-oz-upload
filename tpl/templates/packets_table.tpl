@@ -29,7 +29,7 @@
 						{$key.actualdt}
 					</td>
 					<td align="right">
-						<a class="packets-link-download" href="{$key.content}">{$key.content}</a>
+						<a class="packet-link-download" href="{$key.content}">{$key.content}</a>
 					</td>
 					<td align="right">
 						{$key.caption}

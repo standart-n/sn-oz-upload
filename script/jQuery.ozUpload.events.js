@@ -30,6 +30,7 @@
 						$(this).ozUploadTriggers('linksBalloon');
 						$(this).ozUploadTriggers('switchTabs',{'link':'packets'});
 						$(this).ozUploadTriggers('switchToDark');
+						$(this).ozUploadAjax('sendRequest',{'action':'preview'});
 					break;
 					case "text":
 						$(this).ozUploadAjax('loadContent',{'content':'text'});
