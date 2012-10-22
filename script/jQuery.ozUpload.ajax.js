@@ -47,7 +47,7 @@
 			var sn=$(this).data('ozUpload');
 			$.ajax({
 				url:'index.php',
-				type:'GET',
+				type:'POST',
 				data:{
 					action:def.action,
 					region:sn.region,
