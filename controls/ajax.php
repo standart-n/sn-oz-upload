@@ -26,7 +26,7 @@ function __construct() {
 }
 
 function getControls() {
-	foreach (array("packets") as $key) {
+	foreach (array("packets","text") as $key) {
 		if (!file_exists(project."/controls/".$key.".php")) return false;
 		require_once(project."/controls/".$key.".php");
 		sn::cl("packets");
@@ -84,7 +84,7 @@ function showContent() {
 			load("files.tpl");
 		break;
 		case "text":
-			load("text.tpl");
+			load(text::addTextInfo());
 		break;
 	}
 	echo html();			
