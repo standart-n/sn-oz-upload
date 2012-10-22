@@ -56,7 +56,6 @@
 						}
 					break;
 					case "saveText":
-						alert($("#text-wrap textarea").val());
 						$(this).ozUploadAjax('sendRequest',{
 							'action':'saveText',
 							'file':$("#text-input-file").val(),
