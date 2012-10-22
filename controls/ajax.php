@@ -6,27 +6,30 @@ public static $content;
 public static $file;
 public static $text;
 public static $conf;
+public static $options;
 
 function __construct() {
 	if (self::getControls()) {
 		if (self::getSettings()) {
-			if (self::getUrl()) {
-				switch (self::$action){
-					case "build":
-						packets::build();
-					break;
-					case "preview":
-						packets::preview();
-					break;
-					case "loadText":
-						text::loadText();
-					break;
-					case "saveText":
-						text::saveText();
-					break;
-					case "showContent":
-						self::showContent();
-					break;
+			if (self::getOptions()) {
+				if (self::getUrl()) {
+					switch (self::$action){
+						case "build":
+							packets::build();
+						break;
+						case "preview":
+							packets::preview();
+						break;
+						case "loadText":
+							text::loadText();
+						break;
+						case "saveText":
+							text::saveText();
+						break;
+						case "showContent":
+							self::showContent();
+						break;
+					}
 				}
 			}
 		}
@@ -46,6 +49,16 @@ function getSettings() {
 	if (!file_exists(project."/settings/main.json")) return false;
 	$f=file_get_contents(project."/settings/main.json");
 	self::$conf=json_decode($f);
+	return true;
+}
+
+function getOptions() {
+	if (!file_exists(project."/conf/options.json")) return false;
+	$f=file_get_contents(project."/conf/options.json");
+	self::$options=json_decode($f);
+	define("zcom",self::$options->tables->zcom);
+	define("upload",self::$options->folders->upload);
+	define("publish",self::$options->folders->publish);
 	return true;
 }
 

@@ -15,7 +15,7 @@ function addTextInfo() {
 
 function addLinksToMenu() {
 	self::$links=array(); $i=-1;
-	chdir("../publish/content/".ajax::$region."");
+	chdir("../".publish."/content/".ajax::$region."");
 	$dir=opendir(".");
 	while ($d=readdir($dir)) { $i++;
 		if (is_file($d)) { if (preg_match("/[0-9a-z]+\.html/i",$d)) {
@@ -25,12 +25,12 @@ function addLinksToMenu() {
 		} }
 	}
 	closedir($dir);
-	chdir("../../../upload-dev");
+	chdir("../../../".upload."");
 }
 
 function loadText() { $j=array(); $f="";
-	if (file_exists("../publish/content/".ajax::$region."/".ajax::$file)) {
-		$f=file_get_contents("../publish/content/".ajax::$region."/".ajax::$file);
+	if (file_exists("../".publish."/content/".ajax::$region."/".ajax::$file)) {
+		$f=file_get_contents("../".publish."/content/".ajax::$region."/".ajax::$file);
 		$f=stripcslashes($f);
 		$j['text']=$f;
 		$j['name']=str_replace(".html","",ajax::$file);
@@ -45,9 +45,9 @@ function loadText() { $j=array(); $f="";
 }
 
 function saveText() { $j=array(); $t=ajax::$text;
-	if (file_exists("../publish/content/".ajax::$region."/".ajax::$file)) {
+	if (file_exists("../".publish."/content/".ajax::$region."/".ajax::$file)) {
 		$t=stripcslashes($t);
-		file_put_contents("../publish/content/".ajax::$region."/".ajax::$file,$t);
+		file_put_contents("../".publish."/content/".ajax::$region."/".ajax::$file,$t);
 		$j['text']=ajax::$text;
 		$j['name']=str_replace(".html","",ajax::$file);
 		$j['callback']="afterLoadText";

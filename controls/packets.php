@@ -26,6 +26,7 @@ function build() { $j=array(); $rt=false;
 		if (!self::buildZipArchive()) { self::$status="Не получилось создать архив"; } else {
 			if (!self::buildNewPacket()) { self::$status="Не удалось внести изменения в базу данных"; } else {
 				self::$status='<a href="http://oz.st-n.ru/'.self::$zipName.'" target="_blank">Можете скачать архив</a>';
+				$j['callback']="afterBuildPacket";
 			}
 		}
 	}
@@ -44,8 +45,8 @@ function updateConfFile() {
 		if (isset($key->name)) {
 			if ($key->name==ajax::$region) {
 				if (isset($key->conf)) {
-					if (file_exists("../publish/conf/main.json")) { unlink("../publish/conf/main.json"); }
-					file_put_contents("../publish/conf/main.json",json_encode($key->conf));
+					if (file_exists("../".publish."/conf/main.json")) { unlink("../publish/conf/main.json"); }
+					file_put_contents("../".publish."/conf/main.json",json_encode($key->conf));
 					return true;
 				}
 			}
@@ -61,7 +62,7 @@ function buildNewPacket() {
 	self::$newPacket->caption=iconv("UTF8","cp1251","Обновление от ".date("d.m.Y"));
 	self::$newPacket->content="http://oz.st-n.ru/".self::$zipName;
 	if (query(array(
-		"sql"=>"insert into zcom_test ".
+		"sql"=>"insert into ".zcom." ".
 				"(`post_id`,`content`,`packet`,`status`,`actualdt`,`caption`) values ".
 				"(".
 					"".self::$newPacket->post_id.",".
@@ -97,7 +98,7 @@ function getLastPacketInfo() {
 
 function buildZipArchive() {
 	$rg=ajax::$region;
-	$p="../publish/";
+	$p="../".publish."/";
 	self::$zipName="packets/".$rg."/".date("YmdHis").".zip";
 	if (file_exists("../".self::$zipName)) { unlink("../".self::$zipName); }
 	zip("../".self::$zipName);
@@ -135,7 +136,7 @@ function addPacketsInfo() {
 function addPacketsTable() { 
 	$pc=array(); $i=-1;
 	if (query(array(
-		"sql"=>"select * from zcom_test where (1=1) order by id desc limit 10 ",
+		"sql"=>"select * from ".zcom." where (1=1) order by id desc limit 10 ",
 		"connection"=>ajax::$region
 		),$ms))
 	{
