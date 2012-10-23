@@ -37,7 +37,7 @@ function __construct() {
 }
 
 function getControls() {
-	foreach (array("packets","text") as $key) {
+	foreach (array("packets","text","uchet") as $key) {
 		if (!file_exists(project."/controls/".$key.".php")) return false;
 		require_once(project."/controls/".$key.".php");
 		sn::cl("packets");
