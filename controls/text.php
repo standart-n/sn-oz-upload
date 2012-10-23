@@ -9,6 +9,7 @@ function __construct() {
 
 function addTextInfo() {
 	self::addLinksToMenu();
+	assign('publish',publish);
 	assign('links',self::$links);
 	return fetch("text.tpl");
 }

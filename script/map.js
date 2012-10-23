@@ -98,12 +98,6 @@ function init(){
     myMap.controls.add('zoomControl').add('mapTools');
     
     myMap.setBounds(collection.getBounds());
-
-	// cheboksaru 56.135459,47.235484
-	// kirov 58.581576,49.662283
-	// nijniy novgorod 56.324117,44.002672
-	// moscow 55.755773,37.617761
-	// samara 53.205226,50.191184
 	
 }
 

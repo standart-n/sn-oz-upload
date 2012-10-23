@@ -6,7 +6,7 @@
 					<a id="text-link-save" href="#saveText">Сохранить</a>
 				</td>
 				<td align="center">
-					<a id="text-link-preview" href="http://oz.st-n.ru/publish/" target="_blank">Предпросмотр</a>
+					<a id="text-link-preview" href="http://oz.st-n.ru/{$publish}/" target="_blank">Предпросмотр</a>
 				</td>
 				<td align="center">
 					<div id="status"></div>

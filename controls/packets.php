@@ -45,7 +45,7 @@ function updateConfFile() {
 		if (isset($key->name)) {
 			if ($key->name==ajax::$region) {
 				if (isset($key->conf)) {
-					if (file_exists("../".publish."/conf/main.json")) { unlink("../publish/conf/main.json"); }
+					if (file_exists("../".publish."/conf/main.json")) { unlink("../".publish."/conf/main.json"); }
 					file_put_contents("../".publish."/conf/main.json",json_encode($key->conf));
 					return true;
 				}
@@ -130,6 +130,7 @@ function unixTimeToDateTime($dt) {
 }
 
 function addPacketsInfo() {
+	assign('publish',publish);
 	return fetch("packets.tpl");
 }
 

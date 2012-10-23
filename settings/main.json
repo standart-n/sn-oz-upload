@@ -28,7 +28,7 @@
 			"name":"izhevsk",
 			"hint":"Ижевск",
 			"coordinates":[56.783738,53.161630],
-			"radius":100000,
+			"radius":130000,
 			"icon":
 			{
 				"iconImageHref":"sn-project/img/icon_izhevsk.png"
@@ -39,6 +39,52 @@
 				{
 					"caption":"Ижевск",
 					"name":"izhevsk"
+				},
+				"theme":
+				{
+					"caption":"Тёмная",
+					"name":"darky"
+				}
+			}
+		},
+		{
+			"name":"stavropol",
+			"hint":"Ставрополь",
+			"coordinates":[45.036406,41.966665],
+			"radius":180000,
+			"icon":
+			{
+				"iconImageHref":"sn-project/img/icon_stavropol.png"
+			},
+			"conf":
+			{
+				"region":
+				{
+					"caption":"Ставрополь",
+					"name":"stavropol"
+				},
+				"theme":
+				{
+					"caption":"Тёмная",
+					"name":"darky"
+				}
+			}
+		},
+		{
+			"name":"volgograd",
+			"hint":"Волгоград",
+			"coordinates":[48.631049,44.462134],
+			"radius":200000,
+			"icon":
+			{
+				"iconImageHref":"sn-project/img/icon_volgograd.png"
+			},
+			"conf":
+			{
+				"region":
+				{
+					"caption":"Волгоград",
+					"name":"volgograd"
 				},
 				"theme":
 				{
