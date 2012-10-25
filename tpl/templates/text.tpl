@@ -27,7 +27,7 @@
 								data-file="{$key.file}" 
 								href="#text-{$key.name}"
 							>
-								{$key.file}
+								{$key.caption}
 							</a>
 						{/foreach}
 					{/if}

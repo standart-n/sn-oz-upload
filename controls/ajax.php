@@ -59,6 +59,7 @@ function getOptions() {
 	define("zcom",self::$options->tables->zcom);
 	define("upload",self::$options->folders->upload);
 	define("publish",self::$options->folders->publish);
+	define("packets",self::$options->folders->packets);
 	return true;
 }
 

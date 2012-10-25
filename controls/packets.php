@@ -100,7 +100,7 @@ function getLastPacketInfo() {
 function buildZipArchive() {
 	$rg=ajax::$region;
 	$p="../".publish."/";
-	self::$zipName="packets/".$rg."/".date("YmdHis").".zip";
+	self::$zipName="".packets."/".$rg."/".date("YmdHis").".zip";
 	if (file_exists("../".self::$zipName)) { unlink("../".self::$zipName); }
 	zip("../".self::$zipName);
 	addToZip($p."conf/"					,$p);

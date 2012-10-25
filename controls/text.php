@@ -21,7 +21,29 @@ function addLinksToMenu() {
 	while ($d=readdir($dir)) { $i++;
 		if (is_file($d)) { if (preg_match("/[0-9a-z]+\.html/i",$d)) {
 			$nm=str_replace('.html','',$d);
+			switch (strtolower($nm)) {
+			case "apteki":
+				$caption="Аптеки";
+			break;
+			case "dealers":
+				$caption="Оптовики";
+			break;
+			case "news":
+				$caption="Новости";
+			break;
+			case "main":
+				$caption="Главная";
+			break;
+			case "orders":
+				$caption="Законодательство";
+			break;
+			case "contacts":
+				$caption="Контакты";
+			break;				
+			default: $caption=$nm;	
+			}
 			self::$links[$i]['name']=$nm;
+			self::$links[$i]['caption']=$caption;
 			self::$links[$i]['file']=$nm.".html";
 		} }
 	}
