@@ -4,6 +4,7 @@ public static $action;
 public static $region;
 public static $content;
 public static $file;
+public static $files;
 public static $text;
 public static $conf;
 public static $options;
@@ -37,7 +38,7 @@ function __construct() {
 }
 
 function getControls() {
-	foreach (array("packets","text","uchet") as $key) {
+	foreach (array("packets","text","files","uchet","dt") as $key) {
 		if (!file_exists(project."/controls/".$key.".php")) return false;
 		require_once(project."/controls/".$key.".php");
 		sn::cl("packets");
@@ -125,7 +126,7 @@ function showContent() {
 			innerHTML("#packets-table",packets::addPacketsTable());
 		break;
 		case "files":
-			load("files.tpl");
+			load(files::addFileInfo());
 		break;
 		case "text":
 			load(text::addTextInfo());
