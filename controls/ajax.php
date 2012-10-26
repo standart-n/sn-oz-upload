@@ -13,6 +13,9 @@ function __construct() {
 						case "build":
 							packets::build();
 						break;
+						case "reloadPacketsTable":
+							packets::reloadPacketsTable();
+						break;
 						case "preview":
 							packets::preview();
 						break;
@@ -66,6 +69,9 @@ function getUrl() {
 		case "build":
 			return self::checkParams(array("region","theme"));
 		break;
+		case "reloadPacketsTable":
+			return self::checkParams(array("region","theme"));
+		break;
 		case "preview":
 			return self::checkParams(array("region","theme"));
 		break;
@@ -86,9 +92,9 @@ function getUrl() {
 
 function checkParams($ms) {
 	foreach ($ms as $key) {
-		//if (!isset($_REQUEST[$key])) return false;
+		if (!isset($_REQUEST[$key])) return false;
 		self::$url->$key=trim(strval($_REQUEST[$key]));
-		//if (self::$url->$key=="") return false;
+		if (self::$url->$key=="") return false;
 	}
 	return true;
 }

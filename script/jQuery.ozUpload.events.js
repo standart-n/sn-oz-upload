@@ -44,7 +44,7 @@
 					break;
 					case "afterLoadText":
 						var sn=$(this).data('ozUpload');
-						if (sn.result.text) {							
+						if (sn.result.text) {
 							var text=sn.result.text;
 							text=text.replace(/\\"/g,'"');
 							text=text.replace(/\\'/g,"'");
@@ -75,6 +75,16 @@
 					break;
 					case "build":
 						$(this).ozUploadAjax('sendRequest',{'action':'build'});
+					break;
+					case "afterBuildPacket":
+						var sn=$(this).data('ozUpload');
+						$(this).ozUploadAjax('sendRequest',{'action':'reloadPacketsTable'});
+					break;
+					case "addPacketsTable":
+						var sn=$(this).data('ozUpload');
+						if (sn.result.table) {
+							$("#packets-table").html(sn.result.table);
+						}
 					break;
 					case "close":
 						$(this).hide();

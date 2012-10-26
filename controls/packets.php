@@ -35,6 +35,12 @@ function build() { $j=array(); $rt=false;
 	echo json_encode($j);
 }
 
+function reloadPacketsTable() { $j=array();
+	$j['table']=self::addPacketsTable();
+	$j['callback']="addPacketsTable";
+	echo json_encode($j);
+}
+
 function genNewPacketInfo() {
 	self::$lastPacket->packet=1;
 	self::$lastPacket->post_id=0;

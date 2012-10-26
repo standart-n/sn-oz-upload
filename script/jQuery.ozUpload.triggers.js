@@ -33,8 +33,11 @@
 		uploadify:function()
 		{
 			$('#file_upload').uploadify({
+				'formData':
+				{
+					'asfa'	: 'asfa',
+				},
 				'queueID'	: 'files-queue',
-				'asfa'		: 'asfa',
 				'swf'      	: 'sn-project/uploadify/uploadify.swf',
 				'uploader' 	: 'sn-project/uploadify/uploadify.php'
 			});

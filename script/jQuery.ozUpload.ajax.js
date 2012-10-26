@@ -39,12 +39,15 @@
 		{
 			if (!options) { var options={}; }
 			var def={
+				'type':'json',
+				'debug':false,
 				'action':'build',
 				'content':'',
 				'text':'',
 				'file':''
 			};
 			$.extend(true,def,options);
+			if (def.debug) { def.type='text'; }
 			var sn=$(this).data('ozUpload');
 			$.ajax({
 				url:'index.php',
@@ -57,13 +60,14 @@
 					file:def.file,
 					content:def.content
 				},
-				dataType:'json',
+				dataType:def.type,
 				timeout:10000,
 				beforeSend:function(){
 					$("#status").empty().addClass("loading");
 				},
 				success:function(s){
 					sn.result=s;
+					if (def.debug) { alert(s); }
 					$("#status").empty().removeClass("loading");
 					$(this).data('ozUpload',sn);
 					if (sn.result.status) { $("#status").html(sn.result.status); }
