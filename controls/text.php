@@ -16,7 +16,7 @@ function addTextInfo() {
 
 function addLinksToMenu() {
 	self::$links=array(); $i=-1;
-	chdir("../".publish."/content/".ajax::$region."");
+	chdir("../".publish."/content/".ajax::$url->region."");
 	$dir=opendir(".");
 	while ($d=readdir($dir)) { $i++;
 		if (is_file($d)) { if (preg_match("/[0-9a-z]+\.html/i",$d)) {
@@ -52,33 +52,33 @@ function addLinksToMenu() {
 }
 
 function loadText() { $j=array(); $f="";
-	if (file_exists("../".publish."/content/".ajax::$region."/".ajax::$file)) {
-		$f=file_get_contents("../".publish."/content/".ajax::$region."/".ajax::$file);
+	if (file_exists("../".publish."/content/".ajax::$url->region."/".ajax::$url->file)) {
+		$f=file_get_contents("../".publish."/content/".ajax::$url->region."/".ajax::$url->file);
 		$f=stripcslashes($f);
 		$j['text']=$f;
-		$j['name']=str_replace(".html","",ajax::$file);
+		$j['name']=str_replace(".html","",ajax::$url->file);
 		$j['callback']="afterLoadText";
-		self::$status="Файл ".ajax::$file." загружен...";
+		self::$status="Файл ".ajax::$url->file." загружен...";
 	} else {
-		self::$status="Файл ".ajax::$file." не найден...";
+		self::$status="Файл ".ajax::$url->file." не найден...";
 	}
-	$j['file']=ajax::$file;
+	$j['file']=ajax::$url->file;
 	$j['status']=self::$status;
 	echo json_encode($j);
 }
 
-function saveText() { $j=array(); $t=ajax::$text;
-	if (file_exists("../".publish."/content/".ajax::$region."/".ajax::$file)) {
+function saveText() { $j=array(); $t=ajax::$url->text;
+	if (file_exists("../".publish."/content/".ajax::$url->region."/".ajax::$url->file)) {
 		$t=stripcslashes($t);
-		file_put_contents("../".publish."/content/".ajax::$region."/".ajax::$file,$t);
-		$j['text']=ajax::$text;
-		$j['name']=str_replace(".html","",ajax::$file);
+		file_put_contents("../".publish."/content/".ajax::$url->region."/".ajax::$url->file,$t);
+		$j['text']=ajax::$url->text;
+		$j['name']=str_replace(".html","",ajax::$url->file);
 		$j['callback']="afterLoadText";
-		self::$status="Файл ".ajax::$file." сохранен...";
+		self::$status="Файл ".ajax::$url->file." сохранен...";
 	} else {
-		self::$status="Файл ".ajax::$file." не найден...";
+		self::$status="Файл ".ajax::$url->file." не найден...";
 	}
-	$j['file']=ajax::$file;
+	$j['file']=ajax::$url->file;
 	$j['status']=self::$status;
 	echo json_encode($j);
 }

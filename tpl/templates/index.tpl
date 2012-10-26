@@ -18,6 +18,7 @@
 <link href="sn-project/style/site/packets.css" rel="stylesheet" type="text/css">
 <link href="sn-project/style/site/text.css" rel="stylesheet" type="text/css">
 <link href="sn-project/style/site/files.css" rel="stylesheet" type="text/css">
+<link href="sn-project/uploadify/uploadify.css" rel="stylesheet" type="text/css">
 <script src="http://yandex.st/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
 <script src="http://api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU" type="text/javascript"></script>
 <script src="sn-project/script/jQuery.ozUpload.js" type="text/javascript"></script>
@@ -26,6 +27,7 @@
 <script src="sn-project/script/jQuery.ozUpload.events.js" type="text/javascript"></script>
 <script src="sn-project/script/jQuery.ozUpload.triggers.js" type="text/javascript"></script>
 <script src="sn-project/script/map.js" type="text/javascript"></script>
+<script src="sn-project/uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 </script>
 </head>

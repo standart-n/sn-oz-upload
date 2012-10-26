@@ -1,20 +1,15 @@
 <?php class ajax extends sn {
 	
-public static $action;
-public static $region;
-public static $content;
-public static $file;
-public static $files;
-public static $text;
 public static $conf;
 public static $options;
+public static $url;
 
 function __construct() {
 	if (self::getControls()) {
 		if (self::getSettings()) {
 			if (self::getOptions()) {
 				if (self::getUrl()) {
-					switch (self::$action){
+					switch (self::$url->action){
 						case "build":
 							packets::build();
 						break;
@@ -65,57 +60,41 @@ function getOptions() {
 }
 
 function getUrl() {
-	if (!isset($_REQUEST['action'])) return false;
-	self::$action=trim(strval($_REQUEST['action']));
-	switch (self::$action){
+	self::$url=new def;
+	if (self::checkParams(array("action"))) {
+		switch (self::$url->action){
 		case "build":
-			if (!isset($_REQUEST['region'])) return false;
-			self::$region=trim(strval($_REQUEST['region']));
-			if (self::$region=="") return false;
+			return self::checkParams(array("region","theme"));
 		break;
 		case "preview":
-			if (!isset($_REQUEST['region'])) return false;
-			self::$region=trim(strval($_REQUEST['region']));
-			if (self::$region=="") return false;
+			return self::checkParams(array("region","theme"));
 		break;
 		case "showContent":
-			if (!isset($_REQUEST['region'])) return false;
-			self::$region=trim(strval($_REQUEST['region']));
-			if (self::$region=="") return false;
-
-			if (!isset($_REQUEST['content'])) return false;
-			self::$content=trim(strval($_REQUEST['content']));
-			if (self::$content=="") return false;
+			return self::checkParams(array("region","theme","content"));
 		break;
 		case "loadText":
-			if (!isset($_REQUEST['region'])) return false;
-			self::$region=trim(strval($_REQUEST['region']));
-			if (self::$region=="") return false;
-
-			if (!isset($_REQUEST['file'])) return false;
-			self::$file=trim(strval($_REQUEST['file']));
-			if (self::$file=="") return false;
+			return self::checkParams(array("region","theme","file"));
 		break;
 		case "saveText":
-			if (!isset($_REQUEST['region'])) return false;
-			self::$region=trim(strval($_REQUEST['region']));
-			if (self::$region=="") return false;
-
-			if (!isset($_REQUEST['file'])) return false;
-			self::$file=trim(strval($_REQUEST['file']));
-			if (self::$file=="") return false;
-
-			if (!isset($_REQUEST['text'])) return false;
-			self::$text=trim(strval($_REQUEST['text']));
-			if (self::$text=="") return false;
+			return self::checkParams(array("region","theme","file","text"));
 		break;
-		default:return false;
+		default: return false;
+		}
+	}
+	return true;
+}
+
+function checkParams($ms) {
+	foreach ($ms as $key) {
+		//if (!isset($_REQUEST[$key])) return false;
+		self::$url->$key=trim(strval($_REQUEST[$key]));
+		//if (self::$url->$key=="") return false;
 	}
 	return true;
 }
 
 function showContent() {
-	switch (self::$content){
+	switch (self::$url->content){
 		case "all":
 			load("form.tpl");
 			innerHTML("#balloon-content",packets::addPacketsInfo());
@@ -131,8 +110,9 @@ function showContent() {
 		case "text":
 			load(text::addTextInfo());
 		break;
+		default: echo("[".self::$url->theme."]"); return false; //return false;
 	}
-	echo html();			
+	echo html();
 }
 
 

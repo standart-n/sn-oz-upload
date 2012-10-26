@@ -71,6 +71,7 @@
 						$(this).ozUploadTriggers('linksBalloon');
 						$(this).ozUploadTriggers('switchTabs',{'link':'files'});
 						$(this).ozUploadTriggers('switchToDark');
+						$(this).ozUploadTriggers('uploadify');
 					break;
 					case "build":
 						$(this).ozUploadAjax('sendRequest',{'action':'build'});

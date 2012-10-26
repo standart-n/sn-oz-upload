@@ -2,8 +2,9 @@
 	<div id="files-toolbar">
 		<table align="left" cellpadding="2" cellspacing="2" border="0">
 			<tr valign="top">
-				<td align="center">
-					<a id="files-link-upload" href="#uploadFile">Загрузить</a>
+				<td width="200px" align="center">
+					<!--<a id="files-link-upload" href="#uploadFile">Загрузить</a>-->
+					<input id="file_upload" name="file_upload" type="file" multiple="true">
 				</td>
 				<td align="center">
 					<a id="files-link-preview" href="http://oz.st-n.ru/{$publish}/" target="_blank">Предпросмотр</a>
@@ -35,6 +36,7 @@
 				</td>
 				<td>
 					<div id="files-wrap">
+						<div id="files-queue"></div>
 					</div>
 				</td>
 			</tr>

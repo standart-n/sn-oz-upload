@@ -5,15 +5,15 @@
 		{
 			if (!options) { var options={}; }
 			def={
-				'region':'moscow',
+				'region':{},
+				'theme':{},
 				'content':{},
 				'result':{}
 			}
 			$.extend(true,def,options);
 			return this.each(function(){
 				$(this).data('ozUpload',def);
-				$(this).ozUploadConf();
-				var sn=$(this).data('ozUpload');
+				//$(this).ozUploadConf();
 				$(this).ozUploadEvents({'href':'#autoload'});
 			});
 		}

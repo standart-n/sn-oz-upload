@@ -54,9 +54,21 @@ function init(){
 							opacity:0.2,
 							stroke:true,
 							strokeWidth:2
-						}
-					
-				};
+						},
+						conf:
+						{
+							region:
+							{
+								caption:"",
+								name:""
+							},
+							theme:
+							{
+								caption:"",
+								name:""
+							}
+						}					
+					};
 
 				$.extend(true,rg,this);
 				
@@ -68,7 +80,7 @@ function init(){
 						rg.icon
 					);
 					cityMark.events.add('click',function(e){
-						$("#balloon").ozUpload({'region':rg.name});
+						$("#balloon").ozUpload(rg.conf);
 					});
     
 					var cityCircle = new ymaps.Circle([rg.coordinates,rg.radius],
@@ -79,7 +91,7 @@ function init(){
 					);
 
 					cityCircle.events.add('click',function(e){
-						$("#balloon").ozUpload({'region':rg.name});
+						$("#balloon").ozUpload(rg.conf);
 					});
 					
 					collection.add(cityMark);

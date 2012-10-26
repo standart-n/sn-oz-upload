@@ -15,7 +15,7 @@
 				async:false,
 				dataType:"json",
 				success:function(s){
-					$.extend(sn,s);
+					$.extend(true,sn,s);
 					$(this).data('ozUpload',sn);
 				}
 			});

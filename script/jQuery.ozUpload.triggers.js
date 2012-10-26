@@ -30,6 +30,16 @@
 				oz.ozUploadEvents({'href':$(this).attr("href")});
 			});
 		},
+		uploadify:function()
+		{
+			$('#file_upload').uploadify({
+				'queueID'	: 'files-queue',
+				'asfa'		: 'asfa',
+				'swf'      	: 'sn-project/uploadify/uploadify.swf',
+				'uploader' 	: 'sn-project/uploadify/uploadify.php'
+			});
+	
+		},
 		switchToDark:function()
 		{
 			$("#balloon-content").removeClass("balloon-content-light").addClass("balloon-content-dark");

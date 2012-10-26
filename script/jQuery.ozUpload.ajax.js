@@ -19,10 +19,11 @@
 				url:'index.php',
 				async:false,
 				cache:false,
-				type:'GET',
+				type:'POST',
 				data:{
 					action:'showContent',
-					region:sn.region,
+					region:sn.region.name,
+					theme:sn.theme.name,
 					content:def.content
 				},
 				dataType:'text',
@@ -50,7 +51,8 @@
 				type:'POST',
 				data:{
 					action:def.action,
-					region:sn.region,
+					region:sn.region.name,
+					theme:sn.theme.name,
 					text:def.text,
 					file:def.file,
 					content:def.content

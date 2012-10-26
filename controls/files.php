@@ -16,7 +16,7 @@ function addFileInfo() {
 
 function addLinksToMenu() {
 	self::$links=array(); $i=-1;
-	chdir("../".publish."/files/".ajax::$region."");
+	chdir("../".publish."/files/".ajax::$url->region."");
 	$dir=opendir(".");
 	while ($d=readdir($dir)) { $i++;
 		if (is_dir($d)) { if (preg_match("/[0-9a-z]+/i",$d)) {

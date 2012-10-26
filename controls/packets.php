@@ -11,7 +11,7 @@ function __construct() {
 
 function preview() { $j=array();	
 	if (!self::updateConfFile()) { self::$status="Не удалось получить настройки для данного пакета"; } else {
-		self::$status='Выбран регион: '.ajax::$region;
+		self::$status='Выбран регион: '.ajax::$url->region;
 	}	
 	$j['status']=self::$status;
 	echo json_encode($j);
@@ -44,9 +44,9 @@ function genNewPacketInfo() {
 function updateConfFile() {
 	foreach (ajax::$conf->regions as $key) {
 		if (isset($key->name)) {
-			if ($key->name==ajax::$region) {
+			if (strtolower($key->name)==strtolower(ajax::$url->region)) {
 				if (isset($key->conf)) {
-					if (file_exists("../".publish."/conf/main.json")) { unlink("../".publish."/conf/main.json"); }
+					if (file_exists("../".publish."/conf/main.json")) { @unlink("../".publish."/conf/main.json"); }
 					file_put_contents("../".publish."/conf/main.json",json_encode($key->conf));
 					return true;
 				}
@@ -60,7 +60,7 @@ function buildNewPacket() {
 	self::$newPacket=self::$lastPacket;
 	self::$newPacket->packet++;
 	self::$newPacket->actualdt=round(self::unixTimeToDateTime(time()),0);
-	self::$newPacket->caption=iconv("UTF8","cp1251","Обновление от ".date("d.m.Y"));
+	self::$newPacket->caption=iconv("UTF8","cp1251","Обновление от ".dt::getDateFromDirName(date("YmdHis")));
 	self::$newPacket->content="http://oz.st-n.ru/".self::$zipName;
 	if (query(array(
 		"sql"=>"insert into ".zcom." ".
@@ -73,7 +73,7 @@ function buildNewPacket() {
 					"".self::$newPacket->actualdt.",".
 					"'".self::$newPacket->caption."'".
 				") ",
-		"connection"=>ajax::$region
+		"connection"=>ajax::$url->region
 		))) 
 	{
 		return true;
@@ -84,7 +84,7 @@ function buildNewPacket() {
 function getLastPacketInfo() {
 	if (query(array(
 		"sql"=>"select * from ".zcom." where (1=1) order by id desc limit 1 ",
-		"connection"=>ajax::$region
+		"connection"=>ajax::$url->region
 		),$ms)) 
 	{
 		foreach ($ms as $r) {
@@ -98,21 +98,20 @@ function getLastPacketInfo() {
 
 
 function buildZipArchive() {
-	$rg=ajax::$region;
+	$rg=ajax::$url->region;
+	$th=ajax::$url->theme;
 	$p="../".publish."/";
 	self::$zipName="".packets."/".$rg."/".date("YmdHis").".zip";
 	if (file_exists("../".self::$zipName)) { unlink("../".self::$zipName); }
 	zip("../".self::$zipName);
 	addToZip($p."conf/"					,$p);
 	addToZip($p."content/".$rg			,$p);
-	//addToZip($p."files/".$rg			,$p);
-	//addToZip($p."photo/".$rg			,$p);
-	addToZip($p."img/"					,$p);
-	addToZip($p."js/"					,$p);
+	addToZip($p."img/".$th				,$p);
+	addToZip($p."js/".$th				,$p);
 	addToZip($p."layout/".$rg			,$p);
 	addToZip($p."lib/"					,$p);
 	addToZip($p."script/"				,$p);
-	addToZip($p."style/"				,$p);
+	addToZip($p."style/".$th			,$p);
 	addToZip($p."index.html"			,$p);
 	addToZip($p."favicon.ico"			,$p);
 	return true;
@@ -139,17 +138,18 @@ function addPacketsTable() {
 	$pc=array(); $i=-1;
 	if (query(array(
 		"sql"=>"select * from ".zcom." where (1=1) order by id desc limit 10 ",
-		"connection"=>ajax::$region
+		"connection"=>ajax::$url->region
 		),$ms))
 	{
 		foreach ($ms as $r) {
-			if (file_exists("../".str_replace("http://oz.st-n.ru/","",$r->content))) {
-				$i++;		
+			if (file_exists("../".str_replace("http://oz.st-n.ru/","",$r->content))) { $i++;
+				$packetdate=preg_replace("/(.*)\/([0-9]+)\.zip/","$2",$r->content);
 				$pc[$i]['id']=$r->id;
 				$pc[$i]['packet']=$r->packet;
 				$pc[$i]['actualdt']=round(floatval($r->actualdt),0);
 				$pc[$i]['content']=$r->content;
 				$pc[$i]['caption']=toUTF($r->caption);
+				$pc[$i]['date']=dt::getDateFromDirName($packetdate);
 			}
 		}
 		assign('packets',$pc);

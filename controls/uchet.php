@@ -37,18 +37,27 @@ function updateTextOfMessage($id=1) {
 	return false;	
 }
 
-function getAnswerAfterBuildPacket($id=1) {
+function getAnswerAfterBuildPacket($id=1) { $rg="";
+	switch(ajax::$url->region) {
+	case "izhevsk": 	$rg="Ижевска"; break;
+	case "kirov": 		$rg="Кирова"; break;
+	case "kazan": 		$rg="Казани"; break;
+	case "volgograd": 	$rg="Волгограда"; break;
+	case "stavropol": 	$rg="Ставрополя"; break;
+	case "moscow": 		$rg="Москвы"; break;
+	default: $rg=ajax::$url->region;
+	}
 	switch ($id) {
 	case 1:
-		return toWIN("Общий Заказ: выложить пакет ".
-						"для региона ".ajax::$region." ".
+		return toWIN("Общий Заказ: пакет ".
+						"для ".$rg." ".
 					"");
 	break;
 	case 2:
-		return toWIN("Пакет №".packets::$newPacket->packet.", ".
-						"id:".packets::$newPacket->id.", ".
-						"http://oz.st-n.ru/".packets::$zipName.
-					"");
+		return toWIN("№".packets::$newPacket->packet.", ".
+					 "id:".packets::$newPacket->id.", ".
+					 "http://oz.st-n.ru/".packets::$zipName.
+					 "");
 	break;
 	}
 }
