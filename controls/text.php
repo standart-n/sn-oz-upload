@@ -40,6 +40,21 @@ function addLinksToMenu() {
 			case "contacts":
 				$caption="Контакты";
 			break;				
+			case "vacancy":
+				$caption="Вакансии";
+			break;				
+			case "news_world":
+				$caption="Новости в мире";
+			break;				
+			case "side_main":
+				$caption="Меню на главной";
+			break;				
+			case "side_news":
+				$caption="Меню в новостях";
+			break;				
+			case "side_vacancy":
+				$caption="Меню в вакансиях";
+			break;				
 			default: $caption=$nm;	
 			}
 			self::$links[$i]['name']=$nm;

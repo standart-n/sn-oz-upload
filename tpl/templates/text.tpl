@@ -35,7 +35,7 @@
 				</td>
 				<td>
 					<div id="text-wrap">
-						<textarea id="text-area" autofocus wrap="soft" tabindex="0" accesskey="h" width="100%">lorem ipsum dolor</textarea>
+						<textarea id="text-area" wrap="soft" width="100%">lorem ipsum dolor</textarea>
 						<input id="text-input-file" type="hidden" value="main.html">
 					</div>
 				</td>
