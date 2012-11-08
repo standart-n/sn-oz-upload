@@ -15,10 +15,10 @@ function addTextInfo() {
 }
 
 function addLinksToMenu() {
-	self::$links=array(); $i=-1;
+	self::$links=array();
 	chdir("../".publish."/content/".ajax::$url->region."");
 	$dir=opendir(".");
-	while ($d=readdir($dir)) { $i++;
+	while ($d=readdir($dir)) {
 		if (is_file($d)) { if (preg_match("/[0-9a-z]+\.html/i",$d)) {
 			$nm=str_replace('.html','',$d);
 			switch (strtolower($nm)) {
@@ -57,13 +57,14 @@ function addLinksToMenu() {
 			break;				
 			default: $caption=$nm;	
 			}
-			self::$links[$i]['name']=$nm;
-			self::$links[$i]['caption']=$caption;
-			self::$links[$i]['file']=$nm.".html";
+			self::$links[$nm]['name']=$nm;
+			self::$links[$nm]['caption']=$caption;
+			self::$links[$nm]['file']=$nm.".html";
 		} }
 	}
 	closedir($dir);
 	chdir("../../../".upload."");
+	asort(self::$links); reset(self::$links);
 }
 
 function loadText() { $j=array(); $f="";

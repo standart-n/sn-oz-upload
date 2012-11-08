@@ -25,7 +25,7 @@
 							<a 
 								id="files-menu-{$key.name}" 
 								class="files-links-menu files-links-menu-normal"
-								data-folder="{$key.folder}"
+								data-folder="{$key.name}"
 								href="#files-{$key.name}"
 							>
 								{$key.caption}
@@ -37,6 +37,9 @@
 				<td>
 					<div id="files-wrap">
 						<div id="files-queue"></div>
+						<div id="files-list">
+						
+						</div>
 					</div>
 				</td>
 			</tr>

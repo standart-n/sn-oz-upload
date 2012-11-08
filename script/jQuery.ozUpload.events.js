@@ -56,6 +56,15 @@
 						if (sn.result.file) {
 							$("#text-input-file").val(sn.result.file);
 						}
+					case "afterScanDirectory":
+						var sn=$(this).data('ozUpload');
+						//alert(sn.result.content);
+						if (sn.result.content) {
+							$("#files-list").html(sn.result.content);
+						}
+						if (sn.result.folder) {
+							$(this).ozUploadTriggers('switchFilesMenu',{'link':sn.result.folder});
+						}
 					break;
 					case "saveText":
 						$(this).ozUploadAjax('sendRequest',{
@@ -72,6 +81,8 @@
 						$(this).ozUploadTriggers('switchTabs',{'link':'files'});
 						$(this).ozUploadTriggers('switchToDark');
 						$(this).ozUploadTriggers('uploadify');
+						$(this).ozUploadTriggers('linksFilesMenu');
+						$(this).ozUploadAjax('sendRequest',{'action':'readFolder','folder':sn.result.folder,'debug':false});
 					break;
 					case "build":
 						$(this).ozUploadAjax('sendRequest',{'action':'build'});

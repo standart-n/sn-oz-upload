@@ -28,6 +28,9 @@ function __construct() {
 						case "showContent":
 							self::showContent();
 						break;
+						case "readFolder":
+							files::readFolder();
+						break;
 					}
 				}
 			}
@@ -39,7 +42,7 @@ function getControls() {
 	foreach (array("packets","text","files","uchet","dt") as $key) {
 		if (!file_exists(project."/controls/".$key.".php")) return false;
 		require_once(project."/controls/".$key.".php");
-		sn::cl("packets");
+		sn::cl($key);
 	}
 	return true;	
 }
@@ -84,6 +87,9 @@ function getUrl() {
 		case "saveText":
 			return self::checkParams(array("region","theme","file","text"));
 		break;
+		case "readFolder":
+			return self::checkParams(array("region","theme","folder"));
+		break;
 		default: return false;
 		}
 	}
@@ -99,7 +105,7 @@ function checkParams($ms) {
 	return true;
 }
 
-function showContent() {
+function showContent() { $j=array();
 	switch (self::$url->content){
 		case "all":
 			load("form.tpl");
@@ -111,14 +117,18 @@ function showContent() {
 			innerHTML("#packets-table",packets::addPacketsTable());
 		break;
 		case "files":
+			$j['token']=files::getToken();
+			$j['folder']=date("Ymd");
+			$j['upload']=date("Ymd");
 			load(files::addFileInfo());
 		break;
 		case "text":
 			load(text::addTextInfo());
 		break;
-		default: echo("[".self::$url->theme."]"); return false; //return false;
+		default: return false;
 	}
-	echo html();
+	$j['content']=html();
+	echo json_encode($j);
 }
 
 

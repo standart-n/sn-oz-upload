@@ -33,18 +33,22 @@
 		uploadify:function()
 		{
 			var sn=$(this).data('ozUpload');
+			var oz=$(this);
 			$('#file_upload').uploadify({
 				'formData':
 				{
 					'region' : sn.region.name,
 					'theme' : sn.theme.name,
-					'asfa' : 'asfa',
+					'token' : sn.result.token
 				},
 				'buttonText' : 'Выбрать файлы',
 				'buttonClass' : 'uploadify-button',
 				'queueID' : 'files-queue',
 				'swf' : 'sn-project/uploadify/uploadify.swf',
-				'uploader' :'index.php'
+				'uploader' :'index.php',
+				'onUploadComplete' : function(file) {
+					oz.ozUploadAjax('sendRequest',{'action':'readFolder','folder':sn.result.upload,'debug':false});
+				} 
 			});
 	
 		},
@@ -63,6 +67,13 @@
 				oz.ozUploadAjax('sendRequest',{'action':'loadText','file':$(this).data('file')});
 			});
 		},
+		linksFilesMenu:function()
+		{
+			var oz=$(this);
+			$(".files-links-menu").on("click",function(){
+				oz.ozUploadAjax('sendRequest',{'action':'readFolder','folder':$(this).data('folder')});
+			});
+		},
 		switchTextMenu:function(options)
 		{
 			if (!options) { var options={}; }
@@ -72,6 +83,16 @@
 			$.extend(def,options);
 			$(".text-links-menu").removeClass("text-links-menu-active").addClass("text-links-menu-normal");
 			$("#text-menu-"+def.link+"").removeClass("text-links-menu-normal").addClass("text-links-menu-active").blur();
+		},		
+		switchFilesMenu:function(options)
+		{
+			if (!options) { var options={}; }
+			var def={
+				'link':'main'
+			};
+			$.extend(def,options);
+			$(".files-links-menu").removeClass("files-links-menu-active").addClass("files-links-menu-normal");
+			$("#files-menu-"+def.link+"").removeClass("files-links-menu-normal").addClass("files-links-menu-active").blur();
 		},		
 		switchTabs:function(options)
 		{

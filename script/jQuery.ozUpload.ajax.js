@@ -11,7 +11,12 @@
 		{
 			if (!options) { var options={}; }
 			var def={
-				'content':''
+				'type':'json',
+				'debug':false,
+				'action':'build',
+				'content':'',
+				'text':'',
+				'file':''
 			};
 			$.extend(true,def,options);
 			var sn=$(this).data('ozUpload');
@@ -26,11 +31,15 @@
 					theme:sn.theme.name,
 					content:def.content
 				},
-				dataType:'text',
+				dataType:def.type,
 				timeout:10000,
 				success:function(s){
-					sn.content.balloon=s;
+					$.extend(true,sn.result,s);
+					if (def.debug) { alert(s); }
 					$(this).data('ozUpload',sn);
+					if (sn.result.content) { sn.content.balloon=s.content; }
+					if (sn.result.status) { $("#status").html(sn.result.status); }
+					if (sn.result.alert) { alert(sn.result.alert); }
 				},
 				error:function(XMLHttpRequest,textStatus,error){ alert(error); }
 			});
@@ -43,6 +52,7 @@
 				'debug':false,
 				'action':'build',
 				'content':'',
+				'folder':'',
 				'text':'',
 				'file':''
 			};
@@ -58,6 +68,7 @@
 					theme:sn.theme.name,
 					text:def.text,
 					file:def.file,
+					folder:def.folder,
 					content:def.content
 				},
 				dataType:def.type,
@@ -66,7 +77,7 @@
 					$("#status").empty().addClass("loading");
 				},
 				success:function(s){
-					sn.result=s;
+					$.extend(true,sn.result,s);
 					if (def.debug) { alert(s); }
 					$("#status").empty().removeClass("loading");
 					$(this).data('ozUpload',sn);
