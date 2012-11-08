@@ -48,7 +48,24 @@ border:#222 solid 1px;
 background:#555;
 }
 
-#files-link-upload {
+#file_upload-dev {
+width:10px;
+border:#000 1px solid;
+}
+
+
+#SWFUpload_0 {
+left:13px;
+/*border:#fff solid 1px;*/
+cursor:auto;
+outline:none;
+}
+
+#SWFUpload_0:hover {
+cursor:pointer;
+}
+
+.files-link-upload-dev {
 font-family:Verdana;
 font-size:12px;
 color:#fcfcfc;
@@ -86,6 +103,7 @@ color:#333;
 display:block;
 float:left;
 padding:7px 17px 7px 17px;
+margin:0 0 0 -60px;
 background: #fcfff4;
 background: -moz-linear-gradient(top,  #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fcfff4), color-stop(40%,#dfe5d7), color-stop(100%,#b3bead));
@@ -107,6 +125,7 @@ text-shadow:#fff 0 1px 1px;
 box-shadow:0 0 2px #020202;
 text-decoration:none;
 outline:none;
+z-index:2000;
 }
 
 #files-menu {

@@ -32,14 +32,19 @@
 		},
 		uploadify:function()
 		{
+			var sn=$(this).data('ozUpload');
 			$('#file_upload').uploadify({
 				'formData':
 				{
-					'asfa'	: 'asfa',
+					'region' : sn.region.name,
+					'theme' : sn.theme.name,
+					'asfa' : 'asfa',
 				},
-				'queueID'	: 'files-queue',
-				'swf'      	: 'sn-project/uploadify/uploadify.swf',
-				'uploader' 	: 'sn-project/uploadify/uploadify.php'
+				'buttonText' : 'Выбрать файлы',
+				'buttonClass' : 'uploadify-button',
+				'queueID' : 'files-queue',
+				'swf' : 'sn-project/uploadify/uploadify.swf',
+				'uploader' :'index.php'
 			});
 	
 		},
