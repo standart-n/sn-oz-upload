@@ -7,10 +7,6 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 .uploadify {
 	display:block;
 	float:left;
-	/*position: relative;*/
-	/*left:-10px;*/
-	/*margin-bottom: 1em;*/
-	/*border:#fff solid 1px;*/
 }
 .uploadify-button {
 	font-family:Verdana;
