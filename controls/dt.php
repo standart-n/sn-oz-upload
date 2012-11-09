@@ -9,7 +9,7 @@ function __construct() {
 
 function getDateFromDirName($dir) { $s="";
 	if (intval($dir)>0) {
-		$day=substr($dir,6,2);
+		$day=strval(intval(substr($dir,6,2)));
 		$m=substr($dir,4,2);
 		$an=substr($dir,8);
 		switch ($m) {
