@@ -39,7 +39,7 @@ function __construct() {
 }
 
 function getControls() {
-	foreach (array("packets","text","files","uchet","dt") as $key) {
+	foreach (array("packets","text","files","uchet","dt","upload","console") as $key) {
 		if (!file_exists(project."/controls/".$key.".php")) return false;
 		require_once(project."/controls/".$key.".php");
 		sn::cl($key);
@@ -117,6 +117,7 @@ function showContent() { $j=array();
 			innerHTML("#packets-table",packets::addPacketsTable());
 		break;
 		case "files":
+			upload::makeActualFolder();
 			$j['token']=files::getToken();
 			$j['folder']=date("Ymd");
 			$j['upload']=date("Ymd");
