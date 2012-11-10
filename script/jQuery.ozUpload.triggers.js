@@ -118,6 +118,20 @@
 					$(this).addClass("balloon-top-link-normal");
 				}
 			});
+		},
+		replaceTools:function()
+		{
+			var sn=$(this).data('ozUpload');
+			$(".text-tools-input input").on("focus",function(){
+				$(this).select();
+			});
+			$("#text-link-replace").on("click",function(){
+				var text=$("#text-area").val();
+				var t_find=new RegExp($("#text-tools-find-input input").val(),"gi")
+				var t_replace=$("#text-tools-replace-input input").val();
+				text=text.replace(t_find,t_replace);
+				$("#text-area").val(text);
+			});
 		}
 	};		
 

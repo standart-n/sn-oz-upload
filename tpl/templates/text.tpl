@@ -11,6 +11,39 @@
 				<td align="center">
 					<div id="status"></div>
 				</td>
+				<td>
+					<div id="text-tools">
+							<table align="right" cellpadding="1" cellspacing="1" border="0">
+								<tr>
+									<td>
+										<div id="text-tools-find-caption" class="text-tools-caption">
+											искать:
+										</div>
+									</td>
+									<td>
+										<div id="text-tools-find-input" class="text-tools-input">
+											<input maxlength="20" size="10" type="text" value="{$nowdate}">
+										</div>
+									</td>
+									<td>
+										<div id="text-tools-replace-caption" class="text-tools-caption">
+											заменить на:
+										</div>
+									</td>
+									<td>
+										<div id="text-tools-replace-input" class="text-tools-input">
+											<input maxlength="20" size="10" type="text" value="{$nowdate}">
+										</div>
+									</td>
+									<td>
+										<div class="text-tools-button">
+											<a id="text-link-replace" href="#replace">Заменить</a>
+										</div>
+									</td>
+								</tr>
+							</table>
+					</div>
+				</td>
 			</tr>
 		</table>
 	</div>

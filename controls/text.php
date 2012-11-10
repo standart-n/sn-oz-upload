@@ -11,6 +11,7 @@ function addTextInfo() {
 	self::addLinksToMenu();
 	assign('publish',publish);
 	assign('links',self::$links);
+	assign('nowdate',date("j.n.Y"));
 	return fetch("text.tpl");
 }
 

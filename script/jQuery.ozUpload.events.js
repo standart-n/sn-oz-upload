@@ -40,6 +40,7 @@
 						$(this).ozUploadTriggers('switchTabs',{'link':'text'});
 						$(this).ozUploadTriggers('switchToDark');
 						$(this).ozUploadTriggers('linksTextMenu');
+						$(this).ozUploadTriggers('replaceTools');
 						$(this).ozUploadAjax('sendRequest',{'action':'loadText','file':'main.html'});
 					break;
 					case "afterLoadText":
@@ -58,7 +59,6 @@
 						}
 					case "afterScanDirectory":
 						var sn=$(this).data('ozUpload');
-						//alert(sn.result.content);
 						if (sn.result.content) {
 							$("#files-list").html(sn.result.content);
 						}
