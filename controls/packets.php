@@ -82,6 +82,14 @@ function buildNewPacket() {
 		"connection"=>ajax::$url->region
 		))) 
 	{
+		query(array(
+			"sql"=>"update ".zcom." set status=1 where (1=1) ",
+			"connection"=>ajax::$url->region
+		));
+		query(array(
+			"sql"=>"update ".zcom." set status=0 where (1=1) order by id desc limit 10",
+			"connection"=>ajax::$url->region
+		));
 		return true;
 	}
 	return false;
