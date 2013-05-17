@@ -127,6 +127,7 @@ function buildZipArchive() {
 	addToZip($p."script/"				,$p);
 	addToZip($p."style/".$th			,$p);
 	addToZip($p."index.html"			,$p);
+	addToZip($p."test.html"				,$p);
 	addToZip($p."favicon.ico"			,$p);
 	return true;
 }
