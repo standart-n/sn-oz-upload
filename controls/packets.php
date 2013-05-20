@@ -65,7 +65,7 @@ function updateConfFile() {
 function buildNewPacket() {
 	self::$newPacket=self::$lastPacket;
 	self::$newPacket->packet++;
-	self::$newPacket->actualdt=round(self::unixTimeToDateTime(time()),0);
+	self::$newPacket->actualdt=floor(self::unixTimeToDateTime(time()),0);
 	self::$newPacket->caption=iconv("UTF8","cp1251","Обновление от ".dt::getDateFromDirName(date("YmdHis")));
 	self::$newPacket->content="http://oz.st-n.ru/".self::$zipName;
 	if (query(array(
