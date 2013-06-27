@@ -44,8 +44,8 @@ function init(){
 						icon:
 						{
 							iconImageHref:"sn-project/img/icon_moscow.png",
-							iconImageSize:[100,50],
-							iconImageOffset:[-50,-45]
+							iconImageSize:[99,37],
+							iconImageOffset:[-50,-32]
 						},
 						circle:
 						{

@@ -5,7 +5,7 @@
 			"name":"kirov",
 			"hint":"Кировский регион",
 			"coordinates":[58.581576,49.662283],
-			"radius":150000,
+			"radius":130000,
 			"icon":
 			{
 				"iconImageHref":"sn-project/img/icon_kirov.png"
@@ -16,29 +16,6 @@
 				{
 					"caption":"Киров",
 					"name":"kirov"
-				},
-				"theme":
-				{
-					"caption":"bootstrap",
-					"name":"bootstrap"
-				}
-			}
-		},
-		{
-			"name":"izhevsk",
-			"hint":"Ижевск",
-			"coordinates":[56.783738,53.161630],
-			"radius":130000,
-			"icon":
-			{
-				"iconImageHref":"sn-project/img/icon_izhevsk.png"
-			},
-			"conf":
-			{
-				"region":
-				{
-					"caption":"Ижевск",
-					"name":"izhevsk"
 				},
 				"theme":
 				{
@@ -85,6 +62,52 @@
 				{
 					"caption":"Волгоград",
 					"name":"volgograd"
+				},
+				"theme":
+				{
+					"caption":"bootstrap",
+					"name":"bootstrap"
+				}
+			}
+		},
+		{
+			"name":"yoshkar",
+			"hint":"Йошкар-Ола",
+			"coordinates":[56.637414,47.897611],
+			"radius":90000,
+			"icon":
+			{
+				"iconImageHref":"sn-project/img/icon_yoshkar.png"
+			},
+			"conf":
+			{
+				"region":
+				{
+					"caption":"Йошкар-Ола",
+					"name":"yoshkar"
+				},
+				"theme":
+				{
+					"caption":"bootstrap",
+					"name":"bootstrap"
+				}
+			}
+		},
+		{
+			"name":"izhevsk",
+			"hint":"Ижевск",
+			"coordinates":[56.783738,53.161630],
+			"radius":130000,
+			"icon":
+			{
+				"iconImageHref":"sn-project/img/icon_izhevsk.png"
+			},
+			"conf":
+			{
+				"region":
+				{
+					"caption":"Ижевск",
+					"name":"izhevsk"
 				},
 				"theme":
 				{
