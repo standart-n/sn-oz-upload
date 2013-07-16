@@ -67,7 +67,7 @@ function addUserIntoMessage() {
 	if (query(array(
 		"sql"=>"insert into uchet_detail_send ".
 				"(uchet_id, user_id) values ".
-				"(".self::$uchet_id.",25)",
+				"(".self::$uchet_id.",7)",
 		"connection"=>"spacepro"
 		)))
 	{
@@ -80,7 +80,7 @@ function insertIntoUchet() {
 	if (query(array(
 		"sql"=>"insert into uchet ".
 				"(id,point_id,session_id,status_id,user_id,project_id) values ".
-				"(".self::$uchet_id.",463,0,1,25,8)",
+				"(".self::$uchet_id.",463,0,1,7,8)",
 		"connection"=>"spacepro"
 		)))
 	{
