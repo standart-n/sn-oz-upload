@@ -158,7 +158,10 @@ function addPacketsTable() {
 		),$ms))
 	{
 		foreach ($ms as $r) {
-			if (file_exists("../".str_replace("http://oz.st-n.ru/","",$r->content))) { $i++;
+			$file=$r->content;
+			$file=str_replace("http://oz.st-n.ru/","",$file);
+			$file=str_replace("http://".host."/".folder."/","",$file);
+			if (file_exists("../".$file)) { $i++;
 				$packetdate=preg_replace("/(.*)\/([0-9]+)\.zip/","$2",$r->content);
 				$pc[$i]['id']=$r->id;
 				$pc[$i]['packet']=$r->packet;
