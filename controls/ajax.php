@@ -62,6 +62,8 @@ function getOptions() {
 	define("upload",self::$options->folders->upload);
 	define("publish",self::$options->folders->publish);
 	define("packets",self::$options->folders->packets);
+	define("host",self::$options->folders->host);
+	define("folder",self::$options->folders->folder);
 	return true;
 }
 
