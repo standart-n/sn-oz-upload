@@ -67,7 +67,8 @@ function buildNewPacket() {
 	self::$newPacket->packet++;
 	self::$newPacket->actualdt=floor(self::unixTimeToDateTime(time()));
 	self::$newPacket->caption=iconv("UTF8","cp1251","Обновление от ".dt::getDateFromDirName(date("YmdHis")));
-	self::$newPacket->content="http://oz.st-n.ru/".self::$zipName;
+	self::$newPacket->content="http://".host."/".folder."/".self::$zipName;
+	//self::$newPacket->content="http://oz.st-n.ru/".self::$zipName;
 	if (query(array(
 		"sql"=>"insert into ".zcom." ".
 				"(`post_id`,`content`,`packet`,`status`,`actualdt`,`caption`) values ".
