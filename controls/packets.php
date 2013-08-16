@@ -122,11 +122,10 @@ function buildZipArchive() {
 	addToZip($p."conf/"					,$p);
 	addToZip($p."content/".$rg			,$p);
 	addToZip($p."img/".$th				,$p);
-	addToZip($p."js/".$th				,$p);
 	addToZip($p."layout/".$rg			,$p);
-	addToZip($p."lib/"					,$p);
 	addToZip($p."script/"				,$p);
 	addToZip($p."style/".$th			,$p);
+	addToZip($p."view/"					,$p);
 	addToZip($p."index.html"			,$p);
 	addToZip($p."test.html"				,$p);
 	addToZip($p."favicon.ico"			,$p);
