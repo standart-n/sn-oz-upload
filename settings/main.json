@@ -4,6 +4,7 @@
 		{
 			"name":"kirov",
 			"hint":"Кировский регион",
+			"server": "http://api.oz.st-n.ru",
 			"coordinates":[58.581576,49.662283],
 			"radius":130000,
 			"icon":
@@ -27,6 +28,7 @@
 		{
 			"name":"stavropol",
 			"hint":"Ставрополь",
+			"server": "http://api.oz.st-n.ru",
 			"coordinates":[45.036406,41.966665],
 			"radius":180000,
 			"icon":
@@ -50,6 +52,7 @@
 		{
 			"name":"volgograd",
 			"hint":"Волгоград",
+			"server": "http://api.oz.st-n.ru",
 			"coordinates":[48.631049,44.462134],
 			"radius":200000,
 			"icon":
@@ -73,6 +76,7 @@
 		{
 			"name":"komi",
 			"hint":"Сыктывкар",
+			"server": "http://api.oz.st-n.ru",
 			"coordinates":[61.661988,50.835912],
 			"radius":240000,
 			"icon":
@@ -96,6 +100,7 @@
 		{
 			"name":"yoshkar",
 			"hint":"Йошкар-Ола",
+			"server": "http://api.oz.st-n.ru",
 			"coordinates":[56.637414,47.897611],
 			"radius":90000,
 			"icon":
@@ -119,6 +124,7 @@
 		{
 			"name":"izhevsk",
 			"hint":"Ижевск",
+			"server": "http://api.oz.st-n.ru",
 			"coordinates":[56.783738,53.161630],
 			"radius":130000,
 			"icon":
