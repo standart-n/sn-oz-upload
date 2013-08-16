@@ -127,6 +127,7 @@ function buildZipArchive() {
 	addToZip($p."layout/".$rg			,$p);
 	addToZip($p."script/"				,$p);
 	addToZip($p."style/".$th			,$p);
+	addToZip($p."lib/qunit/"			,$p);
 	addToZip($p."view/"					,$p);
 	addToZip($p."index.html"			,$p);
 	addToZip($p."test.html"				,$p);
