@@ -54,6 +54,8 @@ function updateConfFile() {
 				if (isset($key->conf)) {
 					if (file_exists("../".publish."/conf/main.json")) { @unlink("../".publish."/conf/main.json"); }
 					file_put_contents("../".publish."/conf/main.json",json_encode($key->conf));
+					if (file_exists("../".publish."/conf/regions.json")) { @unlink("../".publish."/conf/regions.json"); }
+					file_put_contents("../".publish."/conf/regions.json",json_encode(ajax::$conf->regions));
 					return true;
 				}
 			}

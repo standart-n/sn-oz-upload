@@ -71,6 +71,29 @@
 			}
 		},
 		{
+			"name":"komi",
+			"hint":"Сыктывкар",
+			"coordinates":[61.661988,50.835912],
+			"radius":240000,
+			"icon":
+			{
+				"iconImageHref":"sn-project/img/icon_komi.png"
+			},
+			"conf":
+			{
+				"region":
+				{
+					"caption":"Сыктывкар",
+					"name":"komi"
+				},
+				"theme":
+				{
+					"caption":"bootstrap",
+					"name":"bootstrap"
+				}
+			}
+		},
+		{
 			"name":"yoshkar",
 			"hint":"Йошкар-Ола",
 			"coordinates":[56.637414,47.897611],
