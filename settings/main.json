@@ -123,7 +123,7 @@
 		},
 		{
 			"name":"izhevsk",
-			"hint":"Ижевск",
+			"hint":"Удмуртия",
 			"server": "http://api.oz.st-n.ru",
 			"coordinates":[56.783738,53.161630],
 			"radius":130000,
@@ -135,7 +135,7 @@
 			{
 				"region":
 				{
-					"caption":"Ижевск",
+					"caption":"Удмуртия",
 					"name":"izhevsk"
 				},
 				"theme":
