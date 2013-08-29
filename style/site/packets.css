@@ -94,6 +94,37 @@ text-decoration:none;
 outline:none;
 }
 
+#packets-link-lastversion {
+font-family:Verdana;
+font-size:12px;
+color:#333;
+display:block;
+float:left;
+padding:7px 17px 7px 17px;
+margin: 0 0 0 20px;
+background: #fcfff4;
+background: -moz-linear-gradient(top,  #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fcfff4), color-stop(40%,#dfe5d7), color-stop(100%,#b3bead));
+background: -webkit-linear-gradient(top,  #fcfff4 0%,#dfe5d7 40%,#b3bead 100%);
+background: -o-linear-gradient(top,  #fcfff4 0%,#dfe5d7 40%,#b3bead 100%);
+background: -ms-linear-gradient(top,  #fcfff4 0%,#dfe5d7 40%,#b3bead 100%);
+background: linear-gradient(to bottom,  #fcfff4 0%,#dfe5d7 40%,#b3bead 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=0 );
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+/*border-top:#78c4e0 1px solid;*/
+border:none;
+-moz-text-shadow:#fff 0 1px 1px;
+-webkit-text-shadow:#fff 0 1px 1px;
+text-shadow:#fff 0 1px 1px;
+-moz-box-shadow:0 0 2px #020202;
+-webkit-box-shadow:0 0 2px #020202;
+box-shadow:0 0 2px #020202;
+text-decoration:none;
+outline:none;
+}
+
 .packets-link-download:hover {
 color:#ff0000;
 }

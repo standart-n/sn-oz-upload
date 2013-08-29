@@ -7,6 +7,7 @@
 				</td>
 				<td align="center">
 					<a id="packets-link-preview" href="http://oz.st-n.ru/{$publish}/" target="_blank">Предпросмотр</a>
+					<a id="packets-link-lastversion" href="http://oz.st-n.ru/regions/{$region}/" target="_blank">Текущая версия</a>
 				</td>
 				<td align="center">
 					<div id="status"></div>

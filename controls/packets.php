@@ -162,6 +162,7 @@ function unixTimeToDateTime($dt) {
 
 function addPacketsInfo() {
 	assign('publish',publish);
+	assign('region',ajax::$url->region);
 	return fetch("packets.tpl");
 }
 
