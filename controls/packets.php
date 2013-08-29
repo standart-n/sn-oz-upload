@@ -24,6 +24,7 @@ function build() { $j=array(); $rt=false;
 	}
 	if (!self::updateConfFile()) { self::$status="Не удалось получить настройки для данного пакета"; } else {
 		if (!self::buildZipArchive()) { self::$status="Не получилось создать архив"; } else {
+			self::updateLocalPacket();
 			if (!self::buildNewPacket()) { self::$status="Не удалось внести изменения в базу данных"; } else {
 				self::$status='<a href="http://oz.st-n.ru/'.self::$zipName.'" target="_blank">Можете скачать архив</a>';
 				uchet::addMessage();
@@ -135,6 +136,18 @@ function buildZipArchive() {
 	return true;
 }
 
+function updateLocalPacket() {
+	$rg=ajax::$url->region;
+	$out='../regions/'.$rg;
+	if (!file_exists($out."/index.html")) {
+		mkdir($out,0777,true);
+	}
+	self::removeDirectory($out);
+
+	$archive = new PclZip("../".self::$zipName);
+	$list = $archive->extract(PCLZIP_OPT_PATH,$out);
+}
+
 function dateTimeToUnixTime($dt) {
 	$SecPerDay=86400;
 	$Offset1970=25569;
@@ -178,5 +191,17 @@ function addPacketsTable() {
 	}
 	return false;
 }
+
+function removeDirectory($dir) {
+	if ($objs = glob($dir."/*")) {
+	   foreach($objs as $obj) {
+		 is_dir($obj) ? self::removeDirectory($obj) : unlink($obj);
+	   }
+	}
+	rmdir($dir);
+}
+
+
+
 
 } ?>
