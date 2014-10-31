@@ -102,7 +102,7 @@
 			"hint":"Йошкар-Ола",
 			"server": "http://api.oz.st-n.ru",
 			"coordinates":[56.637414,47.897611],
-			"radius":90000,
+			"radius":70000,
 			"icon":
 			{
 				"iconImageHref":"sn-project/img/icon_yoshkar.png"
@@ -137,6 +137,78 @@
 				{
 					"caption":"Удмуртия",
 					"name":"izhevsk"
+				},
+				"theme":
+				{
+					"caption":"bootstrap",
+					"name":"bootstrap"
+				}
+			}
+		},
+		{
+			"name":"tver",
+			"hint":"Тверь",
+			"server": "http://api.oz.st-n.ru",
+			"coordinates":[56.855597,35.923116],
+			"radius":40000,
+			"icon":
+			{
+				"iconImageHref":"sn-project/img/icon_tver.png"
+			},
+			"conf":
+			{
+				"region":
+				{
+					"caption":"Тверь",
+					"name":"tver"
+				},
+				"theme":
+				{
+					"caption":"bootstrap",
+					"name":"bootstrap"
+				}
+			}
+		},
+		{
+			"name":"krasnoyarsk",
+			"hint":"Красноярск",
+			"server": "http://api.oz.st-n.ru",
+			"coordinates":[56.010035,92.878780],
+			"radius":300000,
+			"icon":
+			{
+				"iconImageHref":"sn-project/img/icon_krasnoyarsk.png"
+			},
+			"conf":
+			{
+				"region":
+				{
+					"caption":"Красноярск",
+					"name":"krasnoyarsk"
+				},
+				"theme":
+				{
+					"caption":"bootstrap",
+					"name":"bootstrap"
+				}
+			}
+		},
+		{
+			"name":"almaty",
+			"hint":"Алматы",
+			"server": "http://api.oz.st-n.ru",
+			"coordinates":[43.271729,76.885200],
+			"radius":300000,
+			"icon":
+			{
+				"iconImageHref":"sn-project/img/icon_almaty.png"
+			},
+			"conf":
+			{
+				"region":
+				{
+					"caption":"Алматы",
+					"name":"almaty"
 				},
 				"theme":
 				{
